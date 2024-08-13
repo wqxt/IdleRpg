@@ -108,12 +108,12 @@ TextureImporter:
       name: Idle_0
       rect:
         serializedVersion: 2
-        x: 36
+        x: 34
         y: 0
-        width: 28
+        width: 33
         height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -129,12 +129,12 @@ TextureImporter:
       name: Idle_1
       rect:
         serializedVersion: 2
-        x: 164
+        x: 162
         y: 0
-        width: 28
+        width: 33
         height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -150,12 +150,12 @@ TextureImporter:
       name: Idle_2
       rect:
         serializedVersion: 2
-        x: 289
+        x: 287
         y: 0
-        width: 31
+        width: 39
         height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -171,12 +171,12 @@ TextureImporter:
       name: Idle_3
       rect:
         serializedVersion: 2
-        x: 417
+        x: 415
         y: 0
-        width: 33
+        width: 39
         height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -192,12 +192,12 @@ TextureImporter:
       name: Idle_4
       rect:
         serializedVersion: 2
-        x: 545
+        x: 543
         y: 0
-        width: 31
+        width: 39
         height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -213,12 +213,12 @@ TextureImporter:
       name: Idle_5
       rect:
         serializedVersion: 2
-        x: 673
+        x: 671
         y: 0
-        width: 31
+        width: 39
         height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -234,12 +234,12 @@ TextureImporter:
       name: Idle_6
       rect:
         serializedVersion: 2
-        x: 804
+        x: 799
         y: 0
-        width: 28
+        width: 39
         height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
