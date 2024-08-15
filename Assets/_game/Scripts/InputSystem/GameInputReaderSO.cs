@@ -20,17 +20,13 @@ public class GameInputReaderSO : ScriptableObject, GameInput.IInputActions
         Debug.Log($"{this} is Initialized");
     }
 
-    private void SetGameplay()
-    {
-        _gameInput.Input.Enable();
-    }
+    private void SetGameplay() => _gameInput.Input.Enable();
 
     public void OnClick(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
         {
             ClickEvent?.Invoke();
-            //Debug.Log("InputActionPhaseClick is Performed ");
         }
     }
 
@@ -39,7 +35,6 @@ public class GameInputReaderSO : ScriptableObject, GameInput.IInputActions
         if (context.phase == InputActionPhase.Performed)
         {
             TouchEvent?.Invoke();
-            //Debug.Log("InputActionPhaseTouch is Performed ");
         }
     }
 }
