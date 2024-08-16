@@ -26,6 +26,18 @@ public class SceneLoadHandler : ScriptableObject
         LoadMainMenu();
     }
 
+    public void LoadScene(string sceneName)
+    {
+        foreach (var scene in _projectSceneList)
+        {
+            if (scene == sceneName)
+            {
+                SceneManager.LoadScene(scene);
+            }
+        }
+    }
+
+
     public void LoadMainMenu()
     {
         foreach (var scene in _projectSceneList)
