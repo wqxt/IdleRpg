@@ -1,9 +1,8 @@
 using UnityEngine;
 
-
 [CreateAssetMenu(fileName = "CharacterConfiguration", menuName = "ScriptableObject/CharacterConfiguration")]
 
-public class EnemyConfigiration : MonoBehaviour
+public class EnemyConfiguration : ScriptableObject
 {
     [SerializeField] private int _currentHealthValue;
     [SerializeField] private int _maxHealthValue;
