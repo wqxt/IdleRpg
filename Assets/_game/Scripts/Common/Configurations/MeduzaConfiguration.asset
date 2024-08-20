@@ -9,9 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1a012853aaebb44ba3cd9c11bcbad01, type: 3}
-  m_Name: Fireball
+  m_Script: {fileID: 11500000, guid: b84d48a260243834bb791f760c73d6f6, type: 3}
+  m_Name: MeduzaConfiguration
   m_EditorClassIdentifier: 
-  _name: Fireball
-  _attackSpeed: 0
-  _type: 
+  _configurationName: Meduza
+  _currentHealthValue: 0
+  _maxHealthValue: 100
+  _armorValue: 0
+  _damageValue: 0
+  _attackTime: 0.75
+  _prepareAttackTime: 1
+  meleeAttack: 0

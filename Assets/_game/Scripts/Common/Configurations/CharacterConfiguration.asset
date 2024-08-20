@@ -9,11 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc5e47f5fa9fc764d992ee87ac058194, type: 3}
+  m_Script: {fileID: 11500000, guid: b84d48a260243834bb791f760c73d6f6, type: 3}
   m_Name: CharacterConfiguration
   m_EditorClassIdentifier: 
+  _configurationName: Character
   _currentHealthValue: 0
-  _maxHealthValue: 0
+  _maxHealthValue: 100
   _armorValue: 0
   _damageValue: 0
-  _attackTIme: 0
+  _attackTime: 0.82
+  _prepareAttackTime: 3
+  meleeAttack: 0

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a012853aaebb44ba3cd9c11bcbad01, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  _weaponName: Sword
-  _weaponSpeed: 2
-  _weaponType: Melee
+  _name: Sword
+  _attackSpeed: 0
+  _type: 
