@@ -1,41 +1,43 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace _game.StateMachine
 {
     public class AttackState : State
     {
-        private float currentAnimationtime;
-        private float animationLength;
-        public AttackState(Pawn player, StateMachine stateMachine) : base(player, stateMachine) { }
+        private float currentAnimationTime;
+        public AttackState(Pawn pawn, StateMachine stateMachine) : base(pawn, stateMachine) { }
 
         public override void Enter()
         {
-            AnimationClip clip = _pawn._fightIndicatorAnimator.runtimeAnimatorController.animationClips[0];
-            animationLength = clip.length;
+            currentAnimationTime = _pawn.Configuration.AttackTime;
+            _pawn._attackSprite.gameObject.SetActive(true);
 
-            currentAnimationtime = _pawn.Configuration.AttackTime;
-            _pawn._fightIndicatorAnimator.speed = animationLength / _pawn.Configuration.AttackTime;
-            _pawn._pawnAnimator.speed = animationLength / _pawn.Configuration.AttackTime;
+            AnimationClip fightIndicatorAnimatorClip = _pawn._fightIndicatorAnimator.runtimeAnimatorController.animationClips[0];
+            AnimationClip pawnAnimatorClip = _pawn._pawnAnimator.runtimeAnimatorController.animationClips[0];
+
+            _pawn._fightIndicatorAnimator.speed = fightIndicatorAnimatorClip.length / _pawn.Configuration.AttackTime;
+            _pawn._pawnAnimator.speed = pawnAnimatorClip.length / _pawn.Configuration.AttackTime;
 
             _pawn._pawnAnimator.SetBool("Attack", true);
-            _pawn._fightIndicatorAnimator.Play("StartIndicator");
-
         }
+
         public override void Update()
         {
-            if (currentAnimationtime > 0f)
+            if (currentAnimationTime > 0f)
             {
-                currentAnimationtime -= Time.deltaTime;
+                currentAnimationTime -= Time.deltaTime;
             }
             else
             {
-                _stateMachine.ChangeState(_pawn._prepareAttackState);
+                _stateMachine.ChangeState(_pawn._entryState);
             }
         }
         public override void Exit()
         {
-            _pawn._pawnAnimator.speed = 1f;
+            _pawn._fightIndicatorAnimator.Play("Indicator", 0, 0f);
             _pawn._pawnAnimator.SetBool("Attack", false);
+            _pawn._attackSprite.gameObject.SetActive(false);
         }
     }
 }

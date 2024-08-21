@@ -5,18 +5,19 @@ namespace _game.StateMachine
     public class PrepareAttackState : State
     {
         private float currentAnimationtime;
-        private float animationLength;
-        public PrepareAttackState(Pawn player, StateMachine stateMachine) : base(player, stateMachine) { }
+        public PrepareAttackState(Pawn pawn, StateMachine stateMachine) : base(pawn, stateMachine) { }
 
         public override void Enter()
         {
-            AnimationClip clip = _pawn._fightIndicatorAnimator.runtimeAnimatorController.animationClips[0];
-            animationLength = clip.length;
-
+            _pawn._prepareAttackSprite.gameObject.SetActive(true);
             currentAnimationtime = _pawn.Configuration.PrepareAttackTime;
-            _pawn._fightIndicatorAnimator.speed = animationLength / _pawn.Configuration.PrepareAttackTime;
-            _pawn._fightIndicatorAnimator.Play("StartIndicator");
+
+            AnimationClip fightIndicatorAnimatorClip = _pawn._fightIndicatorAnimator.runtimeAnimatorController.animationClips[0];
+
+            _pawn._fightIndicatorAnimator.speed = fightIndicatorAnimatorClip.length / _pawn.Configuration.PrepareAttackTime;
+            _pawn._pawnAnimator.speed = 1f;
         }
+
         public override void Update()
         {
             if (currentAnimationtime > 0f)
@@ -29,6 +30,10 @@ namespace _game.StateMachine
             }
         }
 
-        public override void Exit() => _pawn._fightIndicatorAnimator.SetBool("Play", false);
+        public override void Exit()
+        {
+            _pawn._fightIndicatorAnimator.Play("Indicator", 0, 0f);
+            _pawn._prepareAttackSprite.gameObject.SetActive(false);
+        }
     }
 }

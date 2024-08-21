@@ -9,22 +9,22 @@ public class Configuration : ScriptableObject
 
     [SerializeField] private float _armorValue;
     [SerializeField] private float _damageValue;
-    [SerializeField] private float _attackTime;
-    [SerializeField] private float _prepareAttackTime;
+    [SerializeField, Range(0.1f, 5)] private float _attackTime;
+    [SerializeField, Range(0.1f, 5)] private float _prepareAttackTime;
     [SerializeField] private bool meleeAttack;
 
     public float AttackTime
     {
-        get 
+        get
         {
             return _attackTime;
         }
 
         set
         {
-            if (value <= 0)
+            if (value < 0)
             {
-                return ;
+                _attackTime = 1f;
             }
             else
             {
@@ -44,7 +44,7 @@ public class Configuration : ScriptableObject
         {
             if (value <= 0)
             {
-                return;
+                _prepareAttackTime = 1f;
             }
             else
             {

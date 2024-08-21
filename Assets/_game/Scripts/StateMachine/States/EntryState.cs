@@ -1,17 +1,10 @@
-﻿using UnityEngine;
-
-namespace _game.StateMachine
+﻿namespace _game.StateMachine
 {
     public class EntryState : State
     {
-        public EntryState(Pawn player, StateMachine stateMachine) : base(player, stateMachine) { }
+        public EntryState(Pawn pawn, StateMachine stateMachine) : base(pawn, stateMachine) { }
 
-        public override void Enter()
-        {
-            Debug.Log($"Current pawn = {_pawn.Configuration.name} enter in the current state = {this} ");
-
-            _stateMachine.ChangeState(_pawn._prepareAttackState);
-        }
+        public override void Enter() => _stateMachine.ChangeState(_pawn._prepareAttackState);
 
         public override void Exit() => base.Exit();
     }

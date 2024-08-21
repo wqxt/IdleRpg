@@ -17,6 +17,6 @@ MonoBehaviour:
   _maxHealthValue: 100
   _armorValue: 0
   _damageValue: 0
-  _attackTime: 0.82
-  _prepareAttackTime: 3
+  _attackTime: 2
+  _prepareAttackTime: 1.36
   meleeAttack: 0

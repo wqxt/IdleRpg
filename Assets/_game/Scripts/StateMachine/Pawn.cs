@@ -9,7 +9,8 @@ public class Pawn : MonoBehaviour
     internal protected PrepareAttackState _prepareAttackState;
     internal protected AttackState _attackState;
     internal protected EntryState _entryState;
-
+    public GameObject _prepareAttackSprite;
+    public GameObject _attackSprite;
     public Configuration Configuration
     {
         get
