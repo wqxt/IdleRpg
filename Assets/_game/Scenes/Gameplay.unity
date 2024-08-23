@@ -651,7 +651,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &290339268
 GameObject:
@@ -1042,7 +1042,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1107476986
 GameObject:
@@ -1444,8 +1444,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPool:
+  - {fileID: 4870038334648712482, guid: b36cefe8c143e804991c249b9b88ff1c, type: 3}
+  - {fileID: 4439535888492864887, guid: 161bd86a4bb413b45ad6d0fc60aa3158, type: 3}
   - {fileID: 151417606695971467, guid: 252ddeaf6799ce842a2790e27ea22ad4, type: 3}
-  - {fileID: 151417606695971467, guid: 252ddeaf6799ce842a2790e27ea22ad4, type: 3}
+  - {fileID: 3847528635877806888, guid: 2c9a500f51b28f540a964ba53b33fe4a, type: 3}
   _character: {fileID: 5905206746389459985, guid: 1aed609010e816748b4225113514864b, type: 3}
   _enemyTransform: {fileID: 1014634673}
   _characterTransform: {fileID: 212487205}

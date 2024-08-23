@@ -125,8 +125,8 @@ MonoBehaviour:
   _fightIndicatorAnimator: {fileID: 5503285793548629349}
   _pawnAnimator: {fileID: 7970515943552724315}
   _prepareAttackSprite: {fileID: 4036699958602991493}
-  _attackSprite: {fileID: 4036699958972684713}
   _switchWeaponSprite: {fileID: 2941384550128544309}
+  _attackSprite: {fileID: 4036699958972684713}
 --- !u!1001 &1940854740422817851
 PrefabInstance:
   m_ObjectHideFlags: 0
