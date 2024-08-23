@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5905206746389459985}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.92, y: -2.8, z: 22.082209}
-  m_LocalScale: {x: 8.097201, y: 8.097199, z: 1.1567428}
+  m_LocalPosition: {x: -6.92, y: -2.8, z: 22}
+  m_LocalScale: {x: 8, y: 8, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5905206746527096136}
@@ -126,6 +126,7 @@ MonoBehaviour:
   _pawnAnimator: {fileID: 5905206746389459984}
   _prepareAttackSprite: {fileID: 5905206746601578236}
   _attackSprite: {fileID: 5905206745895420112}
+  _switchWeaponSprite: {fileID: 4694820832060060492}
 --- !u!1001 &3321085882914784814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -242,7 +243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6338917215252397641, guid: 6312db90ff834dc40b6d17781f85122b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 255.99
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6338917215252397641, guid: 6312db90ff834dc40b6d17781f85122b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -277,6 +278,11 @@ PrefabInstance:
 --- !u!4 &2657591635650682635 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6338917215252397641, guid: 6312db90ff834dc40b6d17781f85122b, type: 3}
+  m_PrefabInstance: {fileID: 8293926392240283970}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4694820832060060492 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3620516626361946638, guid: 6312db90ff834dc40b6d17781f85122b, type: 3}
   m_PrefabInstance: {fileID: 8293926392240283970}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &5905206745895420112 stripped

@@ -4,13 +4,7 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private SceneLoadHandler _sceneLoadHandler;
 
-
-    //Используются unity event
-    public void LoadGameplayScene() => _sceneLoadHandler.LoadGameplayScene();
-
-    public void QuitApplication()
-    {
-        Debug.Log("Application Quit");
-        Application.Quit();
-    }
+    //Unity event
+    public void LoadGameplayScene() => _sceneLoadHandler.LoadScene("GamePlay");
+    public void QuitApplication() => Application.Quit();
 }

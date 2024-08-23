@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 503328788064779393}
   - component: {fileID: 503328788064779392}
   m_Layer: 5
-  m_Name: Characterhealth
+  m_Name: EnemyHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

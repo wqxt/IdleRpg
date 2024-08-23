@@ -6,12 +6,64 @@ public class Configuration : ScriptableObject
     [SerializeField] private string _configurationName;
     [SerializeField] private int _currentHealthValue;
     [SerializeField] private int _maxHealthValue;
-
-    [SerializeField] private float _armorValue;
-    [SerializeField] private float _damageValue;
     [SerializeField, Range(0.1f, 5)] private float _attackTime;
     [SerializeField, Range(0.1f, 5)] private float _prepareAttackTime;
-    [SerializeField] private bool meleeAttack;
+    [SerializeField] private bool _meleeAttack;
+    [SerializeField] private float _switchWeaponTime;
+
+    public bool MeleeAttack
+    {
+        get
+        {
+            return _meleeAttack;
+        }
+
+        set
+        {
+            _meleeAttack = value;
+            
+        }
+    }
+
+    public int CurrentHealthValue
+    {
+        get
+        {
+            return _currentHealthValue;
+        }
+
+        set
+        {
+            if (value < 0)
+            {
+                _currentHealthValue = 0;
+            }
+            else
+            {
+                _currentHealthValue = value;
+            }
+        }
+    }
+
+    public float SwitchWeaponTime
+    {
+        get
+        {
+            return _switchWeaponTime;
+        }
+
+        set
+        {
+            if (value < 0)
+            {
+                _switchWeaponTime = 1f;
+            }
+            else
+            {
+                _switchWeaponTime = value;
+            }
+        }
+    }
 
     public float AttackTime
     {

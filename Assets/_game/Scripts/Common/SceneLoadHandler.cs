@@ -11,8 +11,6 @@ public class SceneLoadHandler : ScriptableObject
     public void Initialization()
     {
         string scenesFolderPath = "Assets/_game/Scenes";
-
-        // Получаем список сцен
         string[] sceneFiles = Directory.GetFiles(scenesFolderPath, "*.unity");
 
         _projectSceneList.Clear();
@@ -23,7 +21,7 @@ public class SceneLoadHandler : ScriptableObject
             _projectSceneList.Add(sceneName);
         }
 
-        LoadMainMenu();
+        LoadScene("MainMenu");
     }
 
     public void LoadScene(string sceneName)
@@ -31,29 +29,6 @@ public class SceneLoadHandler : ScriptableObject
         foreach (var scene in _projectSceneList)
         {
             if (scene == sceneName)
-            {
-                SceneManager.LoadScene(scene);
-            }
-        }
-    }
-
-
-    public void LoadMainMenu()
-    {
-        foreach (var scene in _projectSceneList)
-        {
-            if (scene == "MainMenu")
-            {
-                SceneManager.LoadScene(scene);
-            }
-        }
-    }
-
-    public void LoadGameplayScene()
-    {
-        foreach (var scene in _projectSceneList)
-        {
-            if (scene == "Gameplay")
             {
                 SceneManager.LoadScene(scene);
             }
