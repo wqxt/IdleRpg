@@ -1,13 +1,15 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BootstrapPoint : MonoBehaviour
 {
     [SerializeField] private GameInputReaderSO _gameInputReaderSO;
-    [SerializeField] private SceneLoadHandler _sceneLoadHandler;
+    [SerializeField] private GameConfiguration GameConfiguration;
 
     private void Awake()
     {
+        GameConfiguration.CurrentState = GameState.MainMenuState;
         _gameInputReaderSO.Initialization();
-        _sceneLoadHandler.Initialization();
+        SceneManager.LoadScene("MainMenu");
     }
 }

@@ -10,17 +10,17 @@ public class SwitchWeaponState : State
     public override void Enter()
     {
         _pawn._switchWeaponSprite.gameObject.SetActive(true);
-        _currentAnimationTime = _pawn.Configuration.SwitchWeaponTime;
+        _currentAnimationTime = _pawn.PawnConfiguration.SwitchWeaponTime;
 
         AnimationClip fightIndicatorAnimatorClip = _pawn._fightIndicatorAnimator.runtimeAnimatorController.animationClips[0];
 
-        _pawn._fightIndicatorAnimator.speed = fightIndicatorAnimatorClip.length / _pawn.Configuration.SwitchWeaponTime;
+        _pawn._fightIndicatorAnimator.speed = fightIndicatorAnimatorClip.length / _pawn.PawnConfiguration.SwitchWeaponTime;
         _pawn._pawnAnimator.speed = 1f;
     }
 
     public override void Update()
     {
-        if (_currentAnimationTime > 0f)
+        if (_currentAnimationTime > 0f && _pawn.GameConfiguration.CurrentState == GameState.FightState)
         {
             _currentAnimationTime -= Time.deltaTime;
         }

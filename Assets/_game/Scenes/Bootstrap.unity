@@ -167,4 +167,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameInputReaderSO: {fileID: 11400000, guid: be4320fa02655844f90bae98815f2e7e, type: 2}
-  _sceneLoadHandler: {fileID: 11400000, guid: 66b541c894cfaae418e955f0ba3b0c83, type: 2}
+  GameConfiguration: {fileID: 11400000, guid: 6629b3e0825986f4a9b89c864a295999, type: 2}

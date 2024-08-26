@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace _game.StateMachine
 {
@@ -6,21 +7,22 @@ namespace _game.StateMachine
     {
         private float _currentAnimationTime;
         private bool _meleeAttack;
+        
+        public event Action<int,Pawn> Attacked;
         public AttackState(Pawn pawn, StateMachine stateMachine) : base(pawn, stateMachine) { }
 
         public override void Enter()
         {
+            _meleeAttack = _pawn.PawnConfiguration.MeleeAttack;
 
-            _meleeAttack = _pawn.Configuration.MeleeAttack;
-
-            _currentAnimationTime = _pawn.Configuration.AttackTime;
+            _currentAnimationTime = _pawn.PawnConfiguration.AttackTime;
             _pawn._attackSprite.gameObject.SetActive(true);
 
             AnimationClip fightIndicatorAnimatorClip = _pawn._fightIndicatorAnimator.runtimeAnimatorController.animationClips[0];
             AnimationClip pawnAnimatorClip = _pawn._pawnAnimator.runtimeAnimatorController.animationClips[0];
 
-            _pawn._fightIndicatorAnimator.speed = fightIndicatorAnimatorClip.length / _pawn.Configuration.AttackTime;
-            _pawn._pawnAnimator.speed = pawnAnimatorClip.length / _pawn.Configuration.AttackTime;
+            _pawn._fightIndicatorAnimator.speed = fightIndicatorAnimatorClip.length / _pawn.PawnConfiguration.AttackTime;
+            _pawn._pawnAnimator.speed = pawnAnimatorClip.length / _pawn.PawnConfiguration.AttackTime;
 
 
             if (_meleeAttack)
@@ -35,13 +37,13 @@ namespace _game.StateMachine
 
         public override void Update()
         {
-            if (_currentAnimationTime > 0f)
+            if (_currentAnimationTime > 0f && _pawn.GameConfiguration.CurrentState == GameState.FightState)
             {
                 _currentAnimationTime -= Time.deltaTime;
             }
             else
             {
-                if(_meleeAttack != _pawn.Configuration.MeleeAttack)
+                if(_meleeAttack != _pawn.PawnConfiguration.MeleeAttack)
                 {
                     _stateMachine.ChangeState(_pawn._switchWeaponState);
                 }
@@ -49,12 +51,14 @@ namespace _game.StateMachine
                 {
                     _stateMachine.ChangeState(_pawn._entryState);
                 }
-
             }
         }
 
         public override void Exit()
         {
+
+            Attacked?.Invoke(_pawn.PawnConfiguration.CurrentAttackDamage,_pawn);
+
             _pawn._fightIndicatorAnimator.Play("Indicator", 0, 0f);
 
             if (_meleeAttack)

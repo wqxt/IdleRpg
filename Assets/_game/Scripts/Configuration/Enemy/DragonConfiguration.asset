@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b84d48a260243834bb791f760c73d6f6, type: 3}
+  m_Name: DragonConfiguration
+  m_EditorClassIdentifier: 
+  _currentWeapon: {fileID: 11400000, guid: e9d868243e7adba45b126332cc6bb9a8, type: 2}
+  _currentArmor: {fileID: 11400000, guid: 330a068f5e4dbea47989001987ef873c, type: 2}
+  _configurationType: Enemy
+  _startHealthValue: 60
+  _currentHealthValue: 0
+  _maxHealthValue: 60
+  _minHealthValue: 0
+  _attackTime: 2.1
+  _prepareAttackTime: 1.7
+  _meleeAttack: 1
+  _switchWeaponTime: 2
+  _currentAttackDamage: 30
+  _pawnDamage: 7
+  _spawnChance: 1

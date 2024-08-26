@@ -1,10 +1,15 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private SceneLoadHandler _sceneLoadHandler;
+    [SerializeField] private GameConfiguration _gameConfiguration;
 
     //Unity event
-    public void LoadGameplayScene() => _sceneLoadHandler.LoadScene("GamePlay");
+    public void LoadGameplayScene()
+    {
+        _gameConfiguration.CurrentState = GameState.EntryState;
+        SceneManager.LoadScene("Gameplay");
+    }
     public void QuitApplication() => Application.Quit();
 }

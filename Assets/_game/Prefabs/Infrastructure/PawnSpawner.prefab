@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8327279805534428392
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8327279805534428407}
+  - component: {fileID: 8327279805534428406}
+  m_Layer: 0
+  m_Name: PawnSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8327279805534428407
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8327279805534428392}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8327279805534428406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8327279805534428392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf75b35e5bf21a4bafdc8e640899b61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyPool:
+  - {fileID: 855721266776287349, guid: 2c9a500f51b28f540a964ba53b33fe4a, type: 3}
+  - {fileID: 6654079237990411615, guid: b36cefe8c143e804991c249b9b88ff1c, type: 3}
+  - {fileID: 2686438001003281478, guid: 252ddeaf6799ce842a2790e27ea22ad4, type: 3}
+  - {fileID: 8555464832058715217, guid: 161bd86a4bb413b45ad6d0fc60aa3158, type: 3}
+  _character: {fileID: 6313703940621356512, guid: 9055162577c743f48a1dda44751041b0, type: 3}
+  _enemyTransform: {fileID: 0}
+  _characterTransform: {fileID: 4941383060600276825, guid: eb12dab2e6b4bea46b0b912f82f9bbe6, type: 3}
+  _scenePawnList: []
+  _gameConfiguration: {fileID: 11400000, guid: 6629b3e0825986f4a9b89c864a295999, type: 2}
