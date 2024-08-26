@@ -41,7 +41,7 @@ public class PawnSpawner : MonoBehaviour
 
     private void SpawnCharacterPawn()
     {
-        Pawn characterPawn = Instantiate(_character, _characterTransform.transform.position, Quaternion.identity);
+        Pawn characterPawn = Instantiate(_character, _characterTransform.position, Quaternion.identity);
         _scenePawnList.Add(characterPawn);
     }
 
@@ -53,7 +53,7 @@ public class PawnSpawner : MonoBehaviour
         {
             if (_enemyPool[i].PawnConfiguration.SpawnChance <= randomValue)
             {
-                Pawn enemyPawn = Instantiate(_enemyPool[i], _enemyTransform.transform.position, Quaternion.identity);
+                Pawn enemyPawn = Instantiate(_enemyPool[i], _enemyTransform.position, Quaternion.identity);
                 _scenePawnList.Add(enemyPawn);
                 break;
             }
@@ -89,7 +89,7 @@ public class PawnSpawner : MonoBehaviour
                         cumulativeChance += _enemyPool[j].PawnConfiguration.SpawnChance;
                         if (randomValue <= cumulativeChance)
                         {
-                            Pawn enemyPawn = Instantiate(_enemyPool[j], _enemyTransform.transform.position, Quaternion.identity);
+                            Pawn enemyPawn = Instantiate(_enemyPool[j], _enemyTransform.position, Quaternion.identity);
                             _scenePawnList.Add(enemyPawn);
                             break;
                         }

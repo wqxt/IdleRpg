@@ -18,7 +18,19 @@ public class PawnConfiguration : ScriptableObject
     [SerializeField] private int _pawnDamage;
     [SerializeField] private float _spawnChance;
 
-    public int CurrentAttackDamage { get; set; }
+    public int CurrentAttackDamage 
+    { 
+        get
+        {
+            return _currentAttackDamage;
+        }
+
+        set
+        {
+            _currentAttackDamage = value;
+        } 
+    }
+
     public string ConfigurationType
     {
         get

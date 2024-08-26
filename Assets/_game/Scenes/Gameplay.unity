@@ -146,7 +146,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 212487204}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.79, y: -0.25, z: 22}
+  m_LocalPosition: {x: -11.79, y: -0.25, z: 22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -602,6 +602,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 724193692632177536, guid: 440c8e6125bcd2542b18d8d7f36443dc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.92552555
+      objectReference: {fileID: 0}
+    - target: {fileID: 724193692632177536, guid: 440c8e6125bcd2542b18d8d7f36443dc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -346.72977
+      objectReference: {fileID: 0}
+    - target: {fileID: 724193692632177536, guid: 440c8e6125bcd2542b18d8d7f36443dc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -363.00003
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 440c8e6125bcd2542b18d8d7f36443dc, type: 3}
 --- !u!1001 &4424779574667424055
@@ -732,6 +744,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3296341009575757099, guid: e9d05708b0984ea49aba70f760b93a65, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0930931
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296341009575757099, guid: e9d05708b0984ea49aba70f760b93a65, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 42.83777
+      objectReference: {fileID: 0}
+    - target: {fileID: 6635520125206567392, guid: e9d05708b0984ea49aba70f760b93a65, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -729
+      objectReference: {fileID: 0}
+    - target: {fileID: 6635520125422429039, guid: e9d05708b0984ea49aba70f760b93a65, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6635520125422429039, guid: e9d05708b0984ea49aba70f760b93a65, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -709
+      objectReference: {fileID: 0}
     - target: {fileID: 6635520126014733800, guid: e9d05708b0984ea49aba70f760b93a65, type: 3}
       propertyPath: m_Camera
       value: 
@@ -823,6 +855,14 @@ PrefabInstance:
     - target: {fileID: 6635520126014733805, guid: e9d05708b0984ea49aba70f760b93a65, type: 3}
       propertyPath: m_Name
       value: GameplayCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6635520126150466578, guid: e9d05708b0984ea49aba70f760b93a65, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0930931
+      objectReference: {fileID: 0}
+    - target: {fileID: 6635520126150466578, guid: e9d05708b0984ea49aba70f760b93a65, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 42.83777
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9d05708b0984ea49aba70f760b93a65, type: 3}
