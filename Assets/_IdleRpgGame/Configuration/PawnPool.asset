@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d3ea51484cb185408e822b0f4e38415, type: 3}
+  m_Name: PawnPool
+  m_EditorClassIdentifier: 
+  EnemyPool:
+  - {fileID: 6654079237990411615, guid: b36cefe8c143e804991c249b9b88ff1c, type: 3}
+  - {fileID: 8555464832058715217, guid: 161bd86a4bb413b45ad6d0fc60aa3158, type: 3}
+  - {fileID: 2686438001003281478, guid: 252ddeaf6799ce842a2790e27ea22ad4, type: 3}
+  - {fileID: 855721266776287349, guid: 2c9a500f51b28f540a964ba53b33fe4a, type: 3}
+  Character: {fileID: 6313703940621356512, guid: 9055162577c743f48a1dda44751041b0,
+    type: 3}
