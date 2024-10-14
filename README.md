@@ -1,1 +1,1 @@
-# VIRGroupTestTask
+# IdleRpg

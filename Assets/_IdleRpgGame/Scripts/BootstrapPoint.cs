@@ -3,12 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class BootstrapPoint : MonoBehaviour
 {
-    [SerializeField] private GameInputReaderSO _gameInputReaderSO;
-
     private void Awake()
     {
         IdleGameState.CurrentState = GameState.MainMenuState;
-        _gameInputReaderSO.Initialization();
+        GameInputReaderSO inputReaderSO = new GameInputReaderSO();
+        inputReaderSO.Initialization();
         SceneManager.LoadScene("MainMenu");
     }
 }
