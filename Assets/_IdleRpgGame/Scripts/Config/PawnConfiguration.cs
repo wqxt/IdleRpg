@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PawnConfiguration", menuName = "Scriptable Object/Configuration")]
@@ -217,5 +216,4 @@ public class PawnConfiguration : ScriptableObject
             }
         }
     }
-
 }

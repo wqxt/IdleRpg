@@ -122,7 +122,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 624785766736710701}
         m_TargetAssemblyTypeName: SwitchWeaponCanvas, Assembly-CSharp
         m_MethodName: MeleeWeapon
         m_Mode: 1
@@ -163,7 +163,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2599647473341241428}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2117588717658107582
 GameObject:
@@ -1022,7 +1022,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 624785766736710701}
         m_TargetAssemblyTypeName: SwitchWeaponCanvas, Assembly-CSharp
         m_MethodName: RangeWeapon
         m_Mode: 1
@@ -1343,8 +1343,8 @@ RectTransform:
   - {fileID: 8577915958464974325}
   - {fileID: 8284807428348205098}
   - {fileID: 1430296287075845493}
-  - {fileID: 964417371021157242}
   - {fileID: 7894631533947597220}
+  - {fileID: 964417371021157242}
   - {fileID: 3122225895994976114}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1805,6 +1805,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8284807428348205098}
+  - component: {fileID: 624785766736710701}
   m_Layer: 5
   m_Name: WeaponButtons
   m_TagString: Untagged
@@ -1834,6 +1835,21 @@ RectTransform:
   m_AnchoredPosition: {x: -401, y: -358}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &624785766736710701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9182121206035314666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ec6cbcc077232247b550a6c84d14aba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterConfiguration: {fileID: 11400000, guid: 62aee9596baaae44d9e346df5518840c, type: 2}
+  _meleeWeapon: {fileID: 11400000, guid: ffd1f37b8c1f5d9488802c11bd0e7b2c, type: 2}
+  _rangeWeapon: {fileID: 11400000, guid: e9d868243e7adba45b126332cc6bb9a8, type: 2}
 --- !u!1001 &9147440452055039885
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1903,7 +1919,7 @@ PrefabInstance:
       objectReference: {fileID: 855721266776287349, guid: 2c9a500f51b28f540a964ba53b33fe4a, type: 3}
     - target: {fileID: 8327279805534428407, guid: b8c7ad1ec28e18649a86f92065e747ef, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8327279805534428407, guid: b8c7ad1ec28e18649a86f92065e747ef, type: 3}
       propertyPath: m_LocalScale.x

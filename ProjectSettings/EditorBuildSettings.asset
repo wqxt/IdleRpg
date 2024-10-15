@@ -12,10 +12,7 @@ EditorBuildSettings:
     path: Assets/_IdleRpgGame/Scenes/MainMenu.unity
     guid: f727b3a1a9fbf9a4fb3b7659dd9efb04
   - enabled: 1
-    path: Assets/_IdleRpgGame/Scenes/IdleGameplay.unity
+    path: Assets/_IdleRpgGame/Scenes/Gameplay.unity
     guid: 8b10f95c553c56a49be33a5a93056c11
-  - enabled: 0
-    path: Assets/_game/Scenes/Gameplay.unity
-    guid: c6aac39799a660341aca0b24b148d066
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: ae295424b40e9ec4bb7e976f33e665ce, type: 2}
