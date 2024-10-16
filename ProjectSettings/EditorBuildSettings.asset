@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_IdleRpgGame/Scenes/Bootsrtap.unity
+    path: Assets/_IdleRpgGame/Scenes/Bootstrap.unity
     guid: 4e2c8a54e59b47d419f0e8e00b43859b
   - enabled: 1
     path: Assets/_IdleRpgGame/Scenes/MainMenu.unity
