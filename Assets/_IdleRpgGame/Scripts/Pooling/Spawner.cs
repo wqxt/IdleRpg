@@ -9,44 +9,40 @@ public class Spawner : MonoBehaviour
 
     private void Awake()
     {
-        _pawnPool.Setup();
+        _pawnPool.SetupPool();
+        SpawnHealthObserver();
         SpawnCharacter();
         SpawnEnemy();
-        SpawnHealthObserver();
     }
 
-
-    public void SpawnHealthObserver() => _healthObserver = Instantiate(_healthObserver, transform.position, new Quaternion(0, 0, 0, 0), transform);
+    public void SpawnHealthObserver()
+    {
+        _healthObserver = Instantiate(_healthObserver, transform.position, Quaternion.identity, transform);
+    }
 
     private void SpawnCharacter()
     {
-        Pawn characterPawn = Instantiate(_pawnPool.Character, _characterTransform.transform.position, new Quaternion(0, 0, 0, 0), transform);
+        Pawn characterPawn = Instantiate(_pawnPool.Character, _characterTransform.position, Quaternion.identity);
         _pawnPool.ScenePawnList.Add(characterPawn);
 
         PawnHealth healthModel = new PawnHealth(characterPawn, this);
         _pawnPool.PawnHealthList.Add(healthModel);
-
     }
 
     private void SpawnEnemy()
     {
-        float cumulativeChance = 0f;
-        float randomValue = Random.Range(1f, 100f);
+        Pawn enemyPawn = _pawnPool.GetEnemyFromPool();
+        enemyPawn.transform.position = _enemyTransform.position;
 
-        for (int i = 0; i < _pawnPool.EnemyPool.Length; i++)
+        if (enemyPawn == null)
         {
-            cumulativeChance += _pawnPool.EnemyPool[i].PawnConfiguration.SpawnChance;
-            if (randomValue <= cumulativeChance)
-            {
-                Pawn enemyPawn = Instantiate(_pawnPool.EnemyPool[i], _enemyTransform.transform.position, new Quaternion(0, 0, 0, 0), transform);
-                _pawnPool.ScenePawnList.Add(enemyPawn);
-
-                PawnHealth healthModel = new PawnHealth(enemyPawn, this);
-                _pawnPool.PawnHealthList.Add(healthModel);
-                break;
-
-            }
+            Debug.LogError("Enemy pawn is null!");
+            return;
         }
+        _pawnPool.ScenePawnList.Add(enemyPawn);
+
+        PawnHealth healthModel = new PawnHealth(enemyPawn, this);
+        _pawnPool.PawnHealthList.Add(healthModel);
     }
 
     public void RemovePawn(string pawnType)
@@ -55,7 +51,6 @@ public class Spawner : MonoBehaviour
         {
             if (_pawnPool.ScenePawnList[i].PawnConfiguration.Type == pawnType && _pawnPool.ScenePawnList[i].PawnConfiguration.Type != "Character")
             {
-
                 for (int j = 0; j < _pawnPool.PawnHealthList.Count; j++)
                 {
                     if (_pawnPool.PawnHealthList[j]._pawn.PawnConfiguration.Type == _pawnPool.ScenePawnList[i].PawnConfiguration.Type)
@@ -64,11 +59,10 @@ public class Spawner : MonoBehaviour
                     }
                 }
 
-                _pawnPool.ScenePawnList[i].gameObject.SetActive(false);
-                Destroy(_pawnPool.ScenePawnList[i].gameObject);
+                _pawnPool.ReturnEnemyToPool(_pawnPool.ScenePawnList[i]);
                 _pawnPool.ScenePawnList.RemoveAt(i);
 
-                SpawnEnemy();
+                SpawnEnemy(); 
             }
         }
     }

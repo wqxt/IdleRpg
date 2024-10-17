@@ -16,11 +16,11 @@ MonoBehaviour:
   _currentArmor: {fileID: 11400000, guid: 049ae9382c4874c4a8a3b7930b761fb5, type: 2}
   _type: Enemy
   _startHealthValue: 40
-  _currentHealthValue: 30
+  _currentHealthValue: 0
   _maxHealthValue: 40
   _minHealthValue: 0
   _attackTime: 1
-  _prepareAttackTime: 1
+  _prepareAttackTime: 1.32
   _meleeAttack: 1
   _switchWeaponTime: 2
   _currentAttackDamage: 0

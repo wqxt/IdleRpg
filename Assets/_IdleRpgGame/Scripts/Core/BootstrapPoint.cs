@@ -55,20 +55,19 @@ public class BootstrapPoint
 
     private IEnumerator StartGameplay()
     {
-
         yield return SceneManager.LoadSceneAsync(SceneName.BOOT);
         Debug.Log("Load BOOT successfully");
 
         yield return SceneManager.LoadSceneAsync(SceneName.GAMEPLAY);
-        Debug.Log("Load MAINMENU successfully");
+        Debug.Log("Load GAMEPLAY successfully");
     }
 
     private IEnumerator StartMainMenu()
     {
         yield return SceneManager.LoadSceneAsync(SceneName.BOOT);
-        Debug.Log("Load successfully");
+        Debug.Log("Load BOOT successfully");
 
         yield return SceneManager.LoadSceneAsync(SceneName.MAINMENU);
-        Debug.Log("Load successfully");
+        Debug.Log("Load MAINMENU successfully");
     }
 }

@@ -15,15 +15,15 @@ MonoBehaviour:
   _currentWeapon: {fileID: 11400000, guid: ffd1f37b8c1f5d9488802c11bd0e7b2c, type: 2}
   _currentArmor: {fileID: 11400000, guid: 049ae9382c4874c4a8a3b7930b761fb5, type: 2}
   _type: Character
-  _startHealthValue: 100
-  _currentHealthValue: 100
-  _maxHealthValue: 100
+  _startHealthValue: 11111
+  _currentHealthValue: 11111
+  _maxHealthValue: 11111
   _minHealthValue: 0
   _attackTime: 1
   _prepareAttackTime: 2.04
   _meleeAttack: 1
   _switchWeaponTime: 2
   _currentAttackDamage: 0
-  _pawnDamage: 25
+  _pawnDamage: 45
   _spawnChance: 0
   PawnTransform: {fileID: 0}
