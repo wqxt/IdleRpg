@@ -1,6 +1,6 @@
-public static class IdleGameState
+public struct IdleGameState
 {
-    public static GameState CurrentState { get; set; }
+    public static GameState CurrentState { get; set; } = GameState.EntryState;
 }
 public enum GameState
 {

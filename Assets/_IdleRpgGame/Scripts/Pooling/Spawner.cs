@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private Transform _characterTransform;
-    [SerializeField] private Transform _enemyTransform;
+    //[SerializeField] private Transform _characterTransform;
+    //[SerializeField] private Transform _enemyTransform;
     [SerializeField] private HealthObserver _healthObserver;
     [SerializeField] private PawnPool _pawnPool;
 
@@ -17,12 +17,13 @@ public class Spawner : MonoBehaviour
 
     public void SpawnHealthObserver()
     {
-        _healthObserver = Instantiate(_healthObserver, transform.position, Quaternion.identity, transform);
+        _healthObserver = Instantiate(_healthObserver, transform.position, Quaternion.identity);
     }
 
     private void SpawnCharacter()
     {
-        Pawn characterPawn = Instantiate(_pawnPool.Character, _characterTransform.position, Quaternion.identity);
+        Pawn characterPawn = Instantiate(_pawnPool.Character, new Vector3(0,0,0), Quaternion.identity);
+        characterPawn.transform.position = characterPawn._pawnTransform.position;
         _pawnPool.ScenePawnList.Add(characterPawn);
 
         PawnHealth healthModel = new PawnHealth(characterPawn, this);
@@ -32,7 +33,7 @@ public class Spawner : MonoBehaviour
     private void SpawnEnemy()
     {
         Pawn enemyPawn = _pawnPool.GetEnemyFromPool();
-        enemyPawn.transform.position = _enemyTransform.position;
+        enemyPawn.transform.position = enemyPawn._pawnTransform.position;
 
         if (enemyPawn == null)
         {

@@ -55,6 +55,7 @@ MonoBehaviour:
   _prepareAttackSprite: {fileID: 2257686167873835336}
   _switchWeaponSprite: {fileID: 1116946618840038648}
   _attackSprite: {fileID: 2257686167637315428}
+  _pawnTransform: {fileID: 118276510098654360, guid: 5bbb8e11d3bd838458a5f72c3be27641, type: 3}
 --- !u!1 &5903689478608337985
 GameObject:
   m_ObjectHideFlags: 0
