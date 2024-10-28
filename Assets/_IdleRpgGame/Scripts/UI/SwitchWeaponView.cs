@@ -21,6 +21,5 @@ public class SwitchWeaponView : MonoBehaviour
         _characterConfiguration._currentWeapon = _rangeWeapon;
         _characterConfiguration.AttackTime = _characterConfiguration._currentWeapon.AttackSpeed;
         _characterConfiguration.CurrentAttackDamage = (int)_rangeWeapon.DamageValue + _characterConfiguration.PawnDamage;
-
     }
 }

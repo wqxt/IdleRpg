@@ -16,7 +16,7 @@ public class Pawn : MonoBehaviour
     internal protected SwitchWeaponState _switchWeaponState;
     internal protected AttackState _attackState;
     internal protected EntryState _entryState;
-
+    public Transform _pawnTransform;
 
     public PawnConfiguration PawnConfiguration
     {

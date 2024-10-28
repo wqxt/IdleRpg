@@ -161,6 +161,7 @@ MonoBehaviour:
   _prepareAttackSprite: {fileID: 8239189266183533515}
   _switchWeaponSprite: {fileID: 7098696037899099771}
   _attackSprite: {fileID: 8239189267091271143}
+  _pawnTransform: {fileID: 118276510098654360, guid: 5bbb8e11d3bd838458a5f72c3be27641, type: 3}
 --- !u!1001 &5817818250330885237
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -8,6 +8,11 @@ public class MainMenuView : MonoBehaviour
     {
         IdleGameState.CurrentState = GameState.EntryState;
         SceneManager.LoadScene(SceneName.GAMEPLAY);
+        Debug.Log($"Current game state ={IdleGameState.CurrentState}");
     }
-    public void QuitApplication() => Application.Quit();
+    public void QuitApplication()
+    {
+        Application.Quit();
+        Debug.Log($"Quit application");
+    }
 }
