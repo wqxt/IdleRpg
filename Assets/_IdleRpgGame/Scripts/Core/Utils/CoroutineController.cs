@@ -25,8 +25,5 @@ public class CoroutineController : MonoBehaviour, ICoroutineController
 
     }
 
-    public new void StopAllCoroutines()
-    {
-        base.StopAllCoroutines();
-    }
+    public new void StopAllCoroutines() => base.StopAllCoroutines();
 }

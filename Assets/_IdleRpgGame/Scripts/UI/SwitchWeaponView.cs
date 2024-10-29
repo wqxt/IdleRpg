@@ -6,15 +6,16 @@ public class SwitchWeaponView : MonoBehaviour
     [SerializeField] private Weapon _meleeWeapon;
     [SerializeField] private Weapon _rangeWeapon;
 
-    //unit event
+    //unity button 
     public void MeleeWeapon()
     {
         _characterConfiguration.MeleeAttack = true;
         _characterConfiguration._currentWeapon = _meleeWeapon;
         _characterConfiguration.AttackTime = _characterConfiguration._currentWeapon.AttackSpeed;
         _characterConfiguration.CurrentAttackDamage = (int)_meleeWeapon.DamageValue + _characterConfiguration.PawnDamage;
-
     }
+
+    //unity button 
     public void RangeWeapon()
     {
         _characterConfiguration.MeleeAttack = false;

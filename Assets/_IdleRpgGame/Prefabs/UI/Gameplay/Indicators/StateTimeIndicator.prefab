@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2905352061351934989}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.762, z: 0}
-  m_LocalScale: {x: 0.39154413, y: 0.39154428, z: 2.7408094}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.26418656, y: 0.26418668, z: 2.7408094}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9215873625457924966}
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9215873625457924966}
   m_Layer: 0
-  m_Name: FightStateIndicator
+  m_Name: StateTimeIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,8 +130,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9215873625457924967}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.09753395, y: 0.159, z: 0}
-  m_LocalScale: {x: 0.8706679, y: 0.8706679, z: 0.8706679}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9215873626071428321}
@@ -164,8 +164,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9215873626071428350}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.7619, z: 0}
-  m_LocalScale: {x: 0.17434472, y: 0.17434476, z: 1.2204133}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.117635615, y: 0.117635645, z: 1.2204133}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9215873625457924966}

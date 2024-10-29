@@ -863,8 +863,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: HealthObserver, Assembly-CSharp
+      - m_Target: {fileID: 448179197828298581}
+        m_TargetAssemblyTypeName: HealthObserver, IdleRpg.Core
         m_MethodName: HealCharacter
         m_Mode: 1
         m_Arguments:
@@ -1267,7 +1267,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &4890146883334913916
 MonoBehaviour:
   m_ObjectHideFlags: 0

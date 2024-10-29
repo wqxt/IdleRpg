@@ -11,12 +11,13 @@ public class Pawn : MonoBehaviour
     [SerializeField] internal protected GameObject _prepareAttackSprite;
     [SerializeField] internal protected GameObject _switchWeaponSprite;
     [SerializeField] internal protected GameObject _attackSprite;
+    [SerializeField] internal protected Transform _pawnTransform;
     internal protected StateMachine _stateMachine;
     internal protected PrepareAttackState _prepareAttackState;
     internal protected SwitchWeaponState _switchWeaponState;
     internal protected AttackState _attackState;
     internal protected EntryState _entryState;
-    public Transform _pawnTransform;
+
 
     public PawnConfiguration PawnConfiguration
     {

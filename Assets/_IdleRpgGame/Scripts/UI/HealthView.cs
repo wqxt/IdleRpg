@@ -14,7 +14,8 @@ public class HealthView : MonoBehaviour
         _currentHealthValueText.text = _healthSlider.value.ToString();
     }
 
-    internal void SetupHealth(int startHealthValue)
+    //unity button
+    public void RefreshHealth(int startHealthValue)
     {
         _healthSlider.maxValue = startHealthValue;
         _healthSlider.value = startHealthValue;

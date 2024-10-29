@@ -40,7 +40,6 @@ namespace IdleGame.StateMachine
         public override void Update()
         {
 
-
             if (_meleeAttack != _pawn.PawnConfiguration.MeleeAttack)
             {
                 AnimatorStateInfo fightAnimatorStateInfo = _pawn._fightIndicatorAnimator.GetCurrentAnimatorStateInfo(0);
@@ -66,7 +65,8 @@ namespace IdleGame.StateMachine
 
         public override void Exit()
         {
-            _pawn._fightIndicatorAnimator.Play("Indicator", 0, 0f);
+            _pawn._fightIndicatorAnimator.speed = 0;
+            _pawn._pawnAnimator.speed = 0;
             _pawn._prepareAttackSprite.gameObject.SetActive(false);
 
             if (_meleeAttack != _pawn.PawnConfiguration.MeleeAttack)

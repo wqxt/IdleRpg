@@ -16,7 +16,7 @@ public class BootstrapPoint
     }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-    public static void SetupGame()
+    private static void SetupGame()
     {
         Application.targetFrameRate = 60;
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
@@ -25,7 +25,7 @@ public class BootstrapPoint
         _instance.StartGame();
     }
 
-    private void StartGame()
+    public void StartGame()
     {
 
 #if UNITY_EDITOR
@@ -34,40 +34,32 @@ public class BootstrapPoint
 
         if (sceneName == null)
         {
-            Debug.LogWarning("SceneName is Null.");
+            Debug.LogWarning("SceneName is Null. Return.");
             return;
         }
 
         if (sceneName.name.Equals(SceneName.GAMEPLAY, StringComparison.OrdinalIgnoreCase))
         {
-            _coroutineController.StartCoroutine(StartGameplay());
+            _coroutineController.StartCoroutine(LoadScene(SceneName.GAMEPLAY));
             return;
         }
 
         if (!sceneName.name.Equals(SceneName.BOOT, StringComparison.OrdinalIgnoreCase))
         {
-            StartMainMenu();
+            _coroutineController.StartCoroutine(LoadScene(SceneName.MAINMENU));
             return;
         }
 #endif
-        _coroutineController.StartCoroutine(StartMainMenu());
+        _coroutineController.StartCoroutine(LoadScene(SceneName.MAINMENU));
     }
 
-    private IEnumerator StartGameplay()
+    private IEnumerator LoadScene(string targetScene)
     {
-        yield return SceneManager.LoadSceneAsync(SceneName.BOOT);
+
+        yield return SceneManager.LoadSceneAsync(SceneName.BOOT);   //unloading resources
         Debug.Log("Load BOOT successfully");
 
-        yield return SceneManager.LoadSceneAsync(SceneName.GAMEPLAY);
-        Debug.Log("Load GAMEPLAY successfully");
-    }
-
-    private IEnumerator StartMainMenu()
-    {
-        yield return SceneManager.LoadSceneAsync(SceneName.BOOT);
-        Debug.Log("Load BOOT successfully");
-
-        yield return SceneManager.LoadSceneAsync(SceneName.MAINMENU);
-        Debug.Log("Load MAINMENU successfully");
+        yield return SceneManager.LoadSceneAsync(targetScene);  
+        Debug.Log($"Load {targetScene} successfully");
     }
 }
