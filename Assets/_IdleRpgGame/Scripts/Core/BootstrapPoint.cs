@@ -3,71 +3,66 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class BootstrapPoint
+namespace Assets._IdleRpgGame.Scripts.Core.Utils
 {
-    private static BootstrapPoint _instance;
-    private readonly ICoroutineController _coroutineController;
-
-    private BootstrapPoint()
+    public class BootstrapPoint
     {
-        GameObject coroutineObject = new GameObject(name: "[COROUTINE]");
-        _coroutineController = coroutineObject.AddComponent<CoroutineController>();
-        UnityEngine.Object.DontDestroyOnLoad(coroutineObject);
-    }
+        private static BootstrapPoint _instance;
+        private readonly ICoroutineController _coroutineController;
 
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-    public static void SetupGame()
-    {
-        Application.targetFrameRate = 60;
-        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        private BootstrapPoint()
+        {
+            GameObject coroutineObject = new GameObject(name: "[COROUTINE]");
+            _coroutineController = coroutineObject.AddComponent<CoroutineController>();
+            UnityEngine.Object.DontDestroyOnLoad(coroutineObject);
+        }
 
-        _instance = new BootstrapPoint();
-        _instance.StartGame();
-    }
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        private static void SetupGame()
+        {
+            Application.targetFrameRate = 60;
+            Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
-    private void StartGame()
-    {
+            _instance = new BootstrapPoint();
+            _instance.StartGame();
+        }
+
+        public void StartGame()
+        {
 
 #if UNITY_EDITOR
 
-        var sceneName = SceneManager.GetActiveScene();
+            var sceneName = SceneManager.GetActiveScene();
 
-        if (sceneName == null)
-        {
-            Debug.LogWarning("SceneName is Null.");
-            return;
-        }
+            if (sceneName == null)
+            {
+                Debug.LogWarning("SceneName is Null. Return.");
+                return;
+            }
 
-        if (sceneName.name.Equals(SceneName.GAMEPLAY, StringComparison.OrdinalIgnoreCase))
-        {
-            _coroutineController.StartCoroutine(StartGameplay());
-            return;
-        }
+            if (sceneName.name.Equals(SceneName.GAMEPLAY, StringComparison.OrdinalIgnoreCase))
+            {
+                _coroutineController.StartCoroutine(LoadScene(SceneName.GAMEPLAY));
+                return;
+            }
 
-        if (!sceneName.name.Equals(SceneName.BOOT, StringComparison.OrdinalIgnoreCase))
-        {
-            StartMainMenu();
-            return;
-        }
+            if (!sceneName.name.Equals(SceneName.BOOT, StringComparison.OrdinalIgnoreCase))
+            {
+                _coroutineController.StartCoroutine(LoadScene(SceneName.MAINMENU));
+                return;
+            }
 #endif
-        _coroutineController.StartCoroutine(StartMainMenu());
-    }
+            _coroutineController.StartCoroutine(LoadScene(SceneName.MAINMENU));
+        }
 
-    private IEnumerator StartGameplay()
-    {
-        yield return SceneManager.LoadSceneAsync(SceneName.BOOT);
-        Debug.Log("Load BOOT successfully");
+        private IEnumerator LoadScene(string targetScene)
+        {
 
-        yield return SceneManager.LoadSceneAsync(SceneName.GAMEPLAY);
-        Debug.Log("Load GAMEPLAY successfully");
-    }
+            yield return SceneManager.LoadSceneAsync(SceneName.BOOT);   //unloading resources
+            Debug.Log("Load BOOT successfully");
 
-    private IEnumerator StartMainMenu()
-    {
-        yield return SceneManager.LoadSceneAsync(SceneName.BOOT);
-        Debug.Log("Load BOOT successfully");
-
-        yield return SceneManager.LoadSceneAsync(SceneName.MAINMENU);
-        Debug.Log("Load MAINMENU successfully");
+            yield return SceneManager.LoadSceneAsync(targetScene);
+            Debug.Log($"Load {targetScene} successfully");
+        }
     }
 }

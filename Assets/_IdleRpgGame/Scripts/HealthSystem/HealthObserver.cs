@@ -34,7 +34,7 @@ public class HealthObserver : MonoBehaviour
             {
                 if (pawn.PawnConfiguration.Type == view.tag)
                 {
-                    view.SetupHealth(pawn.PawnConfiguration.StartHealthValue);
+                    view.RefreshHealth(pawn.PawnConfiguration.StartHealthValue);
                 }
             }
         }
@@ -68,7 +68,6 @@ public class HealthObserver : MonoBehaviour
         health.PawnHealthRemove -= EnemyPawnHealthUnSubscribe;
     }
 
-
     public void SetupNewEnemyPawnView()
     {
         foreach (var view in _healthview)
@@ -77,7 +76,7 @@ public class HealthObserver : MonoBehaviour
             {
                 if (pawn.PawnConfiguration.Type == view.tag && pawn.PawnConfiguration.Type != "Character")
                 {
-                    view.SetupHealth(pawn.PawnConfiguration.StartHealthValue);
+                    view.RefreshHealth(pawn.PawnConfiguration.StartHealthValue);
                 }
             }
         }
@@ -104,7 +103,8 @@ public class HealthObserver : MonoBehaviour
         }
     }
 
-    public void HealCharacter() //unity button
+    //unity button
+    public void HealCharacter() 
     {
         foreach (var view in _healthview)
         {

@@ -1,15 +1,16 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Assets._IdleRpgGame.Scripts.Core.Utils;
 
 public class MainMenuView : MonoBehaviour
 {
-    //Unity event
+    //unity button 
     public void LoadGameplayScene()
     {
         IdleGameState.CurrentState = GameState.EntryState;
         SceneManager.LoadScene(SceneName.GAMEPLAY);
-        Debug.Log($"Current game state ={IdleGameState.CurrentState}");
     }
+
     public void QuitApplication()
     {
         Application.Quit();
