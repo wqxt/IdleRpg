@@ -545,7 +545,7 @@ RectTransform:
   m_GameObject: {fileID: 1552802106078815629}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 4, z: 3.9375427}
+  m_LocalScale: {x: 2, y: 4, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1405733147372879413}
@@ -555,12 +555,12 @@ RectTransform:
   - {fileID: 4900646827763615114}
   - {fileID: 3784227166388499041}
   m_Father: {fileID: 1542420713940597857}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 545, y: -245}
-  m_SizeDelta: {x: 170.38, y: 32.4}
+  m_AnchoredPosition: {x: 613, y: -315}
+  m_SizeDelta: {x: 170, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &803170170890922450
 MonoBehaviour:
@@ -1210,8 +1210,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4890146883334913917}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.0012, y: 0.0012, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 0.13, y: 0.13, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1542420713940597857}
@@ -1625,11 +1625,11 @@ RectTransform:
   - {fileID: 3879813546848521537}
   - {fileID: 6444084041974900049}
   m_Father: {fileID: 1542420713940597857}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -545, y: -245}
+  m_AnchoredPosition: {x: -613, y: -315}
   m_SizeDelta: {x: 170, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4070980475637680924
@@ -1974,8 +1974,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4907654003710269061}
   - {fileID: 5636579424801947831}
+  - {fileID: 4907654003710269061}
   - {fileID: 4086431711232739784}
   m_Father: {fileID: 4890146883334913889}
   m_RootOrder: 0

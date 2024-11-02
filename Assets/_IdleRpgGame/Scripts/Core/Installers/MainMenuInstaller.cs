@@ -1,28 +1,39 @@
-﻿using UnityEngine;
+﻿using Assets._IdleRpgGame.Scripts.Core.Utils;
+using UnityEngine;
 using Zenject;
 
-namespace Assets._IdleRpgGame.Scripts.Installers
+namespace Assets._IdleRpgGame.Scripts.Core.Installers
 {
     public class MainMenuInstaller : MonoInstaller
     {
-        [SerializeField] private MainMenuView _mainMenuView;
-        [SerializeField] private Camera _mainMenuCamera;
+        [SerializeField] private MainMenuView _mainMenuPrefab;
+        [SerializeField] private Camera _mainMenuCameraPrefab;
 
         public override void InstallBindings()
         {
-            MenuViewInstall();
             InstallCamera();
-            SetCamera();
+            MenuViewInstall();
         }
 
-        public void MenuViewInstall() => _mainMenuView = Container.InstantiatePrefabForComponent<MainMenuView>(_mainMenuView);
-        public void InstallCamera() => _mainMenuCamera = Container.InstantiatePrefabForComponent<Camera>(_mainMenuCamera);
-
-        public void SetCamera()
+        private void InstallCamera()
         {
-            var mainMenuCanvas = _mainMenuView.GetComponent<Canvas>();
-            mainMenuCanvas.renderMode = RenderMode.ScreenSpaceCamera;
-            mainMenuCanvas.worldCamera = _mainMenuCamera;
+            var cameraController = new CameraController();
+            // Привязываем созданный экземпляр как ICameraSetup
+            Container.Bind<ICameraSetup>().FromInstance(cameraController).AsSingle();
+
+            _mainMenuCameraPrefab = Container.InstantiatePrefabForComponent<Camera>(_mainMenuCameraPrefab);
+            Container.Bind<Camera>().FromInstance(_mainMenuCameraPrefab).AsSingle();
+        }
+
+        private void MenuViewInstall()
+        {
+            _mainMenuPrefab = Container.InstantiatePrefabForComponent<MainMenuView>(_mainMenuPrefab);
+            Container.Bind<MainMenuView>().FromInstance(_mainMenuPrefab).AsSingle();
+
+            // Получаем Canvas и ICameraSetup из контейнера, настраиваем камеру для Canvas
+            var canvas = _mainMenuPrefab.GetComponent<Canvas>();
+            var cameraController = Container.Resolve<ICameraSetup>();
+            cameraController.SetCameraForCanvas(canvas, _mainMenuCameraPrefab);
         }
     }
 }

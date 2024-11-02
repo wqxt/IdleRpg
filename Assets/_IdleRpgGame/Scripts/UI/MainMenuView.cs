@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Assets._IdleRpgGame.Scripts.Core.Utils;
 
 public class MainMenuView : MonoBehaviour
 {

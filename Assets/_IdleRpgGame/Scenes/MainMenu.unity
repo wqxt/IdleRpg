@@ -166,8 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1160ee4bd51a1354894450bdc48d2470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainMenuView: {fileID: 7259945609128005162, guid: 009f0cdfe5910cd4e9dcea98eadba667, type: 3}
-  _mainMenuCamera: {fileID: 3089360488174489709, guid: 8f9950f261bc6c6469934a395b4441df, type: 3}
+  _mainMenuPrefab: {fileID: 7259945609128005162, guid: 009f0cdfe5910cd4e9dcea98eadba667, type: 3}
+  _mainMenuCameraPrefab: {fileID: 3089360488174489709, guid: 8f9950f261bc6c6469934a395b4441df, type: 3}
 --- !u!1 &581991651
 GameObject:
   m_ObjectHideFlags: 0

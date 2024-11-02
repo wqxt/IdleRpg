@@ -68,7 +68,6 @@ public class HealthObserver : MonoBehaviour
         health.PawnHealthRemove -= EnemyPawnHealthUnSubscribe;
     }
 
-
     public void SetupNewEnemyPawnView()
     {
         foreach (var view in _healthview)

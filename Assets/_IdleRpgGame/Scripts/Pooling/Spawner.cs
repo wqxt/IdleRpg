@@ -2,27 +2,18 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    //[SerializeField] private Transform _characterTransform;
-    //[SerializeField] private Transform _enemyTransform;
-    [SerializeField] private HealthObserver _healthObserver;
     [SerializeField] private PawnPool _pawnPool;
 
     private void Awake()
     {
         _pawnPool.SetupPool();
-        SpawnHealthObserver();
         SpawnCharacter();
         SpawnEnemy();
     }
 
-    public void SpawnHealthObserver()
-    {
-        _healthObserver = Instantiate(_healthObserver, transform.position, Quaternion.identity);
-    }
-
     private void SpawnCharacter()
     {
-        Pawn characterPawn = Instantiate(_pawnPool.Character, new Vector3(0,0,0), Quaternion.identity);
+        Pawn characterPawn = Instantiate(_pawnPool.Character, new Vector3(0, 0, 0), Quaternion.identity);
         characterPawn.transform.position = characterPawn._pawnTransform.position;
         _pawnPool.ScenePawnList.Add(characterPawn);
 
@@ -63,7 +54,7 @@ public class Spawner : MonoBehaviour
                 _pawnPool.ReturnEnemyToPool(_pawnPool.ScenePawnList[i]);
                 _pawnPool.ScenePawnList.RemoveAt(i);
 
-                SpawnEnemy(); 
+                SpawnEnemy();
             }
         }
     }
