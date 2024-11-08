@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
         characterPawn.transform.position = characterPawn._pawnTransform.position;
         _pawnPool.ScenePawnList.Add(characterPawn);
 
-        PawnHealth healthModel = new PawnHealth(characterPawn, this);
+        PawnHealth healthModel = new PawnHealth(characterPawn);
         _pawnPool.PawnHealthList.Add(healthModel);
     }
 
@@ -33,7 +33,7 @@ public class Spawner : MonoBehaviour
         }
         _pawnPool.ScenePawnList.Add(enemyPawn);
 
-        PawnHealth healthModel = new PawnHealth(enemyPawn, this);
+        PawnHealth healthModel = new PawnHealth(enemyPawn);
         _pawnPool.PawnHealthList.Add(healthModel);
     }
 

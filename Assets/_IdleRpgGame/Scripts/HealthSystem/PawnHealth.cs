@@ -1,19 +1,17 @@
 ﻿using System;
 using UnityEngine;
 
-public class PawnHealth
+public class PawnHealth 
 {
     internal protected readonly Pawn _pawn;
-    private readonly Spawner _spawner;
 
     public event Action<PawnHealth> PawnHealthRemove;
     public event Action<int, string> ChangeHealth;
     public event Action<string> PawnDeath;
 
-    public PawnHealth(Pawn pawn, Spawner spawner)
+    public PawnHealth(Pawn pawn)
     {
         _pawn = pawn;
-        _spawner = spawner;
     }
 
     public void TakeDamage(int damage, string pawnType)
@@ -40,7 +38,6 @@ public class PawnHealth
         }
         else
         {
-            _spawner.RemovePawn(pawnType);
             PawnDeath?.Invoke(pawnType);
             PawnHealthRemove?.Invoke(this);
         }

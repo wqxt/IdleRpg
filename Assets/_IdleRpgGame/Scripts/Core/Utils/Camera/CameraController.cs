@@ -15,7 +15,5 @@ namespace Assets._IdleRpgGame.Scripts.Core.Utils
             canvas.renderMode = RenderMode.WorldSpace;
             canvas.worldCamera = camera;
         }
-
     }
 }
-

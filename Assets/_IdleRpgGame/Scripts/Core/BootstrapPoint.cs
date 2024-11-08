@@ -58,10 +58,10 @@ namespace Assets._IdleRpgGame.Scripts.Core.Utils
         private IEnumerator LoadScene(string targetScene)
         {
 
-            yield return SceneManager.LoadSceneAsync(SceneName.BOOT);   //unloading resources
+            yield return SceneManager.LoadSceneAsync(SceneName.BOOT);   // Выгружаем ресурсы через пустую сцену
             Debug.Log("Load BOOT successfully");
 
-            yield return SceneManager.LoadSceneAsync(targetScene);
+            yield return SceneManager.LoadSceneAsync(targetScene); // Загружаем нужную сцену
             Debug.Log($"Load {targetScene} successfully");
         }
     }

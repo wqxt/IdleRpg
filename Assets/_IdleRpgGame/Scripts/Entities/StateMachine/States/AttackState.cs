@@ -67,7 +67,6 @@ namespace IdleGame.StateMachine
             }
             else
             {
-
                 _pawn._pawnAnimator.SetBool("RangeAttack", false);
             }
 

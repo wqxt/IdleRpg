@@ -148,7 +148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128703448}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 42.130875, y: 45.171772, z: 7.069792}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -224,7 +224,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 263385934}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.250723, y: 2.8513029, z: 9.2856655}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -258,7 +258,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694953675}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -27.250723, y: -2.8513029, z: -9.2856655}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -344,5 +344,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameplayViewPrefab: {fileID: -5956542639884503389, guid: 747db0d5ee459904c9279b6c9275d6c0, type: 3}
   _cameraPrefab: {fileID: 3089360488174489709, guid: 8f9950f261bc6c6469934a395b4441df, type: 3}
-  _healthObserverPrefab: {fileID: 448179197828298581, guid: 1acb1a61de9ddbe40bc26f975529d936, type: 3}
+  _healthViewPrefabs:
+  - {fileID: 1482459826066818979, guid: 1acb1a61de9ddbe40bc26f975529d936, type: 3}
+  - {fileID: 5349107970257814967, guid: 4d3465f7c980fd84d9711a945d9168eb, type: 3}
+  _healthViews: []
   _spawnerPrefab: {fileID: 8327279805534428406, guid: b8c7ad1ec28e18649a86f92065e747ef, type: 3}
+  _pawnPoolPrefab: {fileID: 11400000, guid: 72d619cec89c88849bde8300e757083e, type: 2}
+  _healthObserverPrefab: {fileID: 5346398372814775132, guid: 3d4e6c36ee8db1f4ea3faadaaa4d9df9, type: 3}

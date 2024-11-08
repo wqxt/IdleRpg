@@ -11,6 +11,7 @@ public class MainMenuView : MonoBehaviour
         SceneManager.LoadScene(SceneName.GAMEPLAY);
     }
 
+    //unity button 
     public void QuitApplication()
     {
         Application.Quit();

@@ -1,13 +1,23 @@
-using UnityEngine;
+using Zenject;
 
-public class HealthObserver : MonoBehaviour
+public class HealthObserver
 {
-    [SerializeField] private HealthView[] _healthview;
-    [SerializeField] private PawnPool _pawnPool;
+    private HealthView [] _healthView;
+    private PawnPool _pawnPool;
+    private Spawner _spawner;
+
+    [Inject]
+    public void Construct(Spawner spawner, PawnPool pawnPool, HealthView[] healthView)
+    {
+        _pawnPool = pawnPool;
+        _spawner = spawner;
+        _healthView = healthView;
+        Start();
+    }
 
     private void Start()
     {
-        SetupViews();
+        SetupView();
         SetupSubscribe();
     }
 
@@ -22,13 +32,12 @@ public class HealthObserver : MonoBehaviour
         {
             healthModel.PawnDeath += PawnDeath;
             healthModel.ChangeHealth += ChangeHealthView;
-            healthModel.PawnHealthRemove += EnemyPawnHealthUnSubscribe;
         }
     }
 
-    public void SetupViews()
+    public void SetupView()
     {
-        foreach (var view in _healthview)
+        foreach (var view in _healthView)
         {
             foreach (var pawn in _pawnPool.ScenePawnList)
             {
@@ -42,11 +51,21 @@ public class HealthObserver : MonoBehaviour
 
     private void PawnDeath(string pawnType)
     {
-        EnemyPawnHealthSubscribe(pawnType);
-        SetupNewEnemyPawnView();
+        foreach (var healthModel in _pawnPool.PawnHealthList)
+        {
+            if (healthModel._pawn.PawnConfiguration.Type == pawnType)
+            {
+                PawnUnSubscribe(pawnType); // Отписываемся от событий пешку, которую будем скрывать
+                break;
+            }
+        }
+
+        _spawner.RemovePawn(pawnType); // Cкрываем пешку, создаем новую
+        PawnSubscribe(pawnType); // Подписываем новую пешку 
+        SetupNewPawnView(); // Обновляем health view 
     }
 
-    public void EnemyPawnHealthSubscribe(string pawnType)
+    public void PawnSubscribe(string pawnType)
     {
         foreach (var healthModel in _pawnPool.PawnHealthList)
         {
@@ -55,22 +74,26 @@ public class HealthObserver : MonoBehaviour
                 healthModel.PawnDeath += PawnDeath;
                 healthModel.ChangeHealth += ChangeHealthView;
                 healthModel._pawn._attackState.Attacked += TakeDamage;
-                healthModel.PawnHealthRemove += EnemyPawnHealthUnSubscribe;
             }
         }
     }
 
-    private void EnemyPawnHealthUnSubscribe(PawnHealth health)
+    private void PawnUnSubscribe(string pawnType)
     {
-        health.PawnDeath -= PawnDeath;
-        health.ChangeHealth -= ChangeHealthView;
-        health._pawn._attackState.Attacked -= TakeDamage;
-        health.PawnHealthRemove -= EnemyPawnHealthUnSubscribe;
+        foreach (var healthModel in _pawnPool.PawnHealthList)
+        {
+            if (healthModel._pawn.PawnConfiguration.Type == pawnType)
+            {
+                healthModel.PawnDeath -= PawnDeath;
+                healthModel.ChangeHealth -= ChangeHealthView;
+                healthModel._pawn._attackState.Attacked -= TakeDamage;
+            }
+        }
     }
 
-    public void SetupNewEnemyPawnView()
+    public void SetupNewPawnView()
     {
-        foreach (var view in _healthview)
+        foreach (var view in _healthView)
         {
             foreach (var pawn in _pawnPool.ScenePawnList)
             {
@@ -89,12 +112,11 @@ public class HealthObserver : MonoBehaviour
             var healthModel = _pawnPool.PawnHealthList[i];
             healthModel.TakeDamage(damage, pawnType);
         }
-
     }
 
     private void ChangeHealthView(int currentHealth, string pawnType)
     {
-        foreach (var healthView in _healthview)
+        foreach (var healthView in _healthView)
         {
             if (pawnType.Equals(healthView.tag))
             {
@@ -104,9 +126,9 @@ public class HealthObserver : MonoBehaviour
     }
 
     //unity button
-    public void HealCharacter() 
+    public void HealCharacter()
     {
-        foreach (var view in _healthview)
+        foreach (var view in _healthView)
         {
             foreach (var pawn in _pawnPool.ScenePawnList)
             {
