@@ -8,17 +8,18 @@ namespace Assets._IdleRpgGame.Scripts.Core.Installers
     {
         [SerializeField] private GameplayView _gameplayViewPrefab;
         [SerializeField] private Camera _cameraPrefab;
-        [SerializeField] private HealthObserver _healthObserverPrefab;
+        [SerializeField] private HealthView[] _healthViewPrefabs;
         [SerializeField] private Spawner _spawnerPrefab;
+        [SerializeField] private PawnPool _pawnPoolPrefab;
+
         public override void InstallBindings()
         {
+            PawnPoolInstall();
+            SpawnerInstall();
             CameraInstall();
             GameplayViewInstall();
-
-            // Spawner первый,  так как HealthSystem требует наличие сущностей на сцене.
-            SpawnerInstall();
             HealthViewInstall();
-
+            HealthObserverInstall();
         }
 
         private void CameraInstall()
@@ -41,20 +42,37 @@ namespace Assets._IdleRpgGame.Scripts.Core.Installers
             cameraController.SetCameraForCanvas(canvas, _cameraPrefab);
         }
 
+
         private void HealthViewInstall()
         {
-            _healthObserverPrefab = Container.InstantiatePrefabForComponent<HealthObserver>(_healthObserverPrefab);
-            Container.Bind<HealthObserver>().FromInstance(_healthObserverPrefab).AsSingle();
+            for (int i = 0; i < _healthViewPrefabs.Length; i++)
+            {
+                _healthViewPrefabs[i] = Container.InstantiatePrefabForComponent<HealthView>(_healthViewPrefabs[i]);
+                Container.Bind<HealthView>().FromInstance(_healthViewPrefabs[i]).AsCached();
 
-            var canvas = _healthObserverPrefab.GetComponent<Canvas>();
-            var cameraController = Container.Resolve<ICameraSetup>();
-            cameraController.SetCameraForCanvas(canvas, _cameraPrefab);
+                var canvas = _healthViewPrefabs[i].GetComponent<Canvas>();
+                var cameraController = Container.Resolve<ICameraSetup>();
+                cameraController.SetCameraForCanvas(canvas, _cameraPrefab);
+            }
+
+            Container.Bind<HealthView[]>().FromInstance(_healthViewPrefabs).AsSingle();
+        }
+
+        private void HealthObserverInstall()
+        {
+            var healthObserver = Container.Instantiate<HealthObserver>();
+            Container.Bind<HealthObserver>().FromInstance(healthObserver).AsSingle();
         }
 
         private void SpawnerInstall()
         {
             _spawnerPrefab = Container.InstantiatePrefabForComponent<Spawner>(_spawnerPrefab);
             Container.Bind<Spawner>().FromInstance(_spawnerPrefab).AsSingle();
+        }
+
+        private void PawnPoolInstall()
+        {
+            Container.Bind<PawnPool>().FromInstance(_pawnPoolPrefab).AsSingle();
         }
     }
 }

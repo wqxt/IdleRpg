@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "PawnConfiguration", menuName = "Scriptable Object/PawnPool")]
 public class PawnPool : ScriptableObject
 {
     [SerializeField] private protected Pawn[] EnemyPool;
@@ -16,8 +17,8 @@ public class PawnPool : ScriptableObject
         PawnHealthList = new List<PawnHealth>();
         AvailableEnemies = new List<Pawn>();
 
-        //create all enemys
-        for (int i = 0; i < EnemyPool.Length; i++) 
+        // Создаем пешки и добавляем в пул текущих врагов на сцене 
+        for (int i = 0; i < EnemyPool.Length; i++)
         {
             Pawn enemy = Instantiate(EnemyPool[i]);
             enemy.gameObject.SetActive(false);
