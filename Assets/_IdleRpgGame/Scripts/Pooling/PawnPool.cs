@@ -8,7 +8,7 @@ public class PawnPool : ScriptableObject
     [SerializeField] internal protected Pawn Character;
 
     internal protected List<Pawn> ScenePawnList { get; set; }
-    internal protected List<PawnHealth> PawnHealthList { get; set; }
+    internal  List<PawnHealth> PawnHealthList { get; set; }
     internal protected List<Pawn> AvailableEnemies { get; set; }
 
     public void SetupPool()

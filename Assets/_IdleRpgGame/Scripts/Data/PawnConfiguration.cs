@@ -20,8 +20,6 @@ public class PawnConfiguration : ScriptableObject
     [SerializeField] private float _spawnChance;
     [SerializeField] public Transform PawnTransform;
 
-    public event Action<string> PawnDeath;
-
     public int CurrentAttackDamage { get; set; }
     public string Type
     {
@@ -144,7 +142,6 @@ public class PawnConfiguration : ScriptableObject
             if (value < 0 || value == 0)
             {
 
-                PawnDeath?.Invoke(Type);
                 _currentHealthValue = 0;
             }
             else

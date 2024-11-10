@@ -2,7 +2,7 @@ using Zenject;
 
 public class HealthObserver
 {
-    private HealthView [] _healthView;
+    public HealthView[] _healthView;
     private PawnPool _pawnPool;
     private Spawner _spawner;
 
@@ -12,12 +12,12 @@ public class HealthObserver
         _pawnPool = pawnPool;
         _spawner = spawner;
         _healthView = healthView;
-        Start();
+        Initialization();
     }
 
-    private void Start()
+    private void Initialization()
     {
-        SetupView();
+        SetupPawnView();
         SetupSubscribe();
     }
 
@@ -25,25 +25,29 @@ public class HealthObserver
     {
         foreach (Pawn pawn in _pawnPool.ScenePawnList)
         {
-            pawn._attackState.Attacked += TakeDamage;
+            pawn._attackState.Attacked += PawnTakeDamage;
         }
 
-        foreach (var healthModel in _pawnPool.PawnHealthList)
+        foreach (var pawnHealth in _pawnPool.PawnHealthList)
         {
-            healthModel.PawnDeath += PawnDeath;
-            healthModel.ChangeHealth += ChangeHealthView;
+            pawnHealth.PawnDeath += PawnDeath;
+            pawnHealth.ChangeHealth += UpdatePawnHealthView;
         }
     }
 
-    public void SetupView()
+    public void SetupPawnView()
     {
         foreach (var view in _healthView)
         {
             foreach (var pawn in _pawnPool.ScenePawnList)
             {
-                if (pawn.PawnConfiguration.Type == view.tag)
+                if (pawn.PawnConfiguration.Type == view.tag && IdleGameState.CurrentState == GameState.EntryState)
                 {
-                    view.RefreshHealth(pawn.PawnConfiguration.StartHealthValue);
+                    view.SetupHealth(pawn.PawnConfiguration.StartHealthValue);
+                }
+                else if(pawn.PawnConfiguration.Type == view.tag && pawn.PawnConfiguration.Type != "Character")
+                {
+                    view.UpdateHealth(pawn.PawnConfiguration.CurrentHealthValue);
                 }
             }
         }
@@ -51,9 +55,9 @@ public class HealthObserver
 
     private void PawnDeath(string pawnType)
     {
-        foreach (var healthModel in _pawnPool.PawnHealthList)
+        foreach (var pawnHealth in _pawnPool.PawnHealthList)
         {
-            if (healthModel._pawn.PawnConfiguration.Type == pawnType)
+            if (pawnHealth._pawn.PawnConfiguration.Type == pawnType)
             {
                 PawnUnSubscribe(pawnType); // Отписываемся от событий пешку, которую будем скрывать
                 break;
@@ -62,81 +66,53 @@ public class HealthObserver
 
         _spawner.RemovePawn(pawnType); // Cкрываем пешку, создаем новую
         PawnSubscribe(pawnType); // Подписываем новую пешку 
-        SetupNewPawnView(); // Обновляем health view 
+        SetupPawnView(); // Настроиваем отображение здоровья
     }
 
     public void PawnSubscribe(string pawnType)
     {
-        foreach (var healthModel in _pawnPool.PawnHealthList)
+        foreach (var pawnhealth in _pawnPool.PawnHealthList)
         {
-            if (healthModel._pawn.PawnConfiguration.Type == pawnType)
+            if (pawnhealth._pawn.PawnConfiguration.Type == pawnType)
             {
-                healthModel.PawnDeath += PawnDeath;
-                healthModel.ChangeHealth += ChangeHealthView;
-                healthModel._pawn._attackState.Attacked += TakeDamage;
+                pawnhealth.PawnDeath += PawnDeath;
+                pawnhealth.ChangeHealth += UpdatePawnHealthView;
+                pawnhealth._pawn._attackState.Attacked += PawnTakeDamage;
             }
         }
     }
 
     private void PawnUnSubscribe(string pawnType)
     {
-        foreach (var healthModel in _pawnPool.PawnHealthList)
+        foreach (var pawnHealth in _pawnPool.PawnHealthList)
         {
-            if (healthModel._pawn.PawnConfiguration.Type == pawnType)
+            if (pawnHealth._pawn.PawnConfiguration.Type == pawnType)
             {
-                healthModel.PawnDeath -= PawnDeath;
-                healthModel.ChangeHealth -= ChangeHealthView;
-                healthModel._pawn._attackState.Attacked -= TakeDamage;
+                pawnHealth.PawnDeath -= PawnDeath;
+                pawnHealth.ChangeHealth -= UpdatePawnHealthView;
+                pawnHealth._pawn._attackState.Attacked -= PawnTakeDamage;
             }
         }
     }
 
-    public void SetupNewPawnView()
-    {
-        foreach (var view in _healthView)
-        {
-            foreach (var pawn in _pawnPool.ScenePawnList)
-            {
-                if (pawn.PawnConfiguration.Type == view.tag && pawn.PawnConfiguration.Type != "Character")
-                {
-                    view.RefreshHealth(pawn.PawnConfiguration.StartHealthValue);
-                }
-            }
-        }
-    }
-
-    private void TakeDamage(int damage, string pawnType)
+    private void PawnTakeDamage(int damage, string pawnType)
     {
         for (int i = 0; i < _pawnPool.PawnHealthList.Count; i++)
         {
-            var healthModel = _pawnPool.PawnHealthList[i];
-            healthModel.TakeDamage(damage, pawnType);
+            var pawnHealth = _pawnPool.PawnHealthList[i];
+            pawnHealth.TakeDamage(damage, pawnType);
+   
         }
     }
 
-    private void ChangeHealthView(int currentHealth, string pawnType)
+    public void UpdatePawnHealthView(int currentHealth, string pawnType)
     {
+
         foreach (var healthView in _healthView)
         {
             if (pawnType.Equals(healthView.tag))
             {
-                healthView.ChangeHealth(currentHealth);
-            }
-        }
-    }
-
-    //unity button
-    public void HealCharacter()
-    {
-        foreach (var view in _healthView)
-        {
-            foreach (var pawn in _pawnPool.ScenePawnList)
-            {
-                if (pawn.PawnConfiguration.Type == view.tag && view.tag == "Character")
-                {
-                    pawn.PawnConfiguration.CurrentHealthValue = pawn.PawnConfiguration.MaxHealthValue;
-                    view.ChangeHealth(pawn.PawnConfiguration.MaxHealthValue);
-                }
+                healthView.UpdateHealth(currentHealth);
             }
         }
     }

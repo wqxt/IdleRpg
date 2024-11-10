@@ -8,18 +8,30 @@ public class HealthView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _maxHealthValueText;
     [SerializeField] private Slider _healthSlider;
 
-    public void ChangeHealth(int currentHealthValue)
+
+    //  Для тестирования
+    public int CurrentHealthTextValue => int.Parse(_currentHealthValueText.text);
+    public float HealthSliderValue => _healthSlider.value;
+
+
+    public void Initialize(TextMeshProUGUI currentHealthText, TextMeshProUGUI maxHealthText, Slider healthSlider)
     {
-        _healthSlider.value = currentHealthValue;
-        _currentHealthValueText.text = _healthSlider.value.ToString();
+        _currentHealthValueText = currentHealthText;
+        _maxHealthValueText = maxHealthText;
+        _healthSlider = healthSlider;
     }
 
-    //unity button
-    public void RefreshHealth(int startHealthValue)
+    public void UpdateHealth(int currentHealthValue)
+    {
+        _healthSlider.value = currentHealthValue;
+        _currentHealthValueText.text = currentHealthValue.ToString();
+    }
+
+    public void SetupHealth(int startHealthValue)
     {
         _healthSlider.maxValue = startHealthValue;
         _healthSlider.value = startHealthValue;
         _maxHealthValueText.text = startHealthValue.ToString();
-        _currentHealthValueText.text = _healthSlider.value.ToString();
+        _currentHealthValueText.text = startHealthValue.ToString();
     }
 }

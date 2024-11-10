@@ -24,6 +24,6 @@ MonoBehaviour:
   _meleeAttack: 1
   _switchWeaponTime: 2
   _currentAttackDamage: 15
-  _pawnDamage: 5
+  _pawnDamage: 500
   _spawnChance: 10
   PawnTransform: {fileID: 0}
