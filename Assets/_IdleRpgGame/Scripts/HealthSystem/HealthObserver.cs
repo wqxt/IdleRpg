@@ -76,7 +76,7 @@ public class HealthObserver
                 {
                     view.SetupHealth(pawn.PawnConfiguration.StartHealthValue, pawn.PawnConfiguration.MaxHealthValue);
                 }
-                else if(pawn.PawnConfiguration.Type == view.tag && pawn.PawnConfiguration.Type != "Character")
+                else if(view.CompareTag(pawn.PawnConfiguration.Type) && pawn.PawnConfiguration.Type != "Character")
                 {
                     view.UpdateHealth(pawn.PawnConfiguration.CurrentHealthValue);
                 }
@@ -106,16 +106,14 @@ public class HealthObserver
         {
             var pawnHealth = _pawnPool.PawnHealthList[i];
             pawnHealth.TakeDamage(damage, pawnType);
-   
         }
     }
 
     public void UpdatePawnHealthView(int currentHealth, string pawnType)
     {
-
         foreach (var healthView in _healthView)
         {
-            if (pawnType.Equals(healthView.tag))
+            if (pawnType.Equals(healthView.tag) && healthView != null)
             {
                 healthView.UpdateHealth(currentHealth);
             }

@@ -20,8 +20,8 @@ public class PawnConfiguration : ScriptableObject
 
     public void EditorSetup()
     {
-          _currentHealthValue = _startHealthValue;
-          _maxHealthValue = _startHealthValue;
+        _currentHealthValue = _startHealthValue;
+        _maxHealthValue = _startHealthValue;
     }
 
     internal void Setup()
@@ -73,7 +73,6 @@ public class PawnConfiguration : ScriptableObject
             {
                 _startHealthValue = value;
             }
-
         }
     }
 

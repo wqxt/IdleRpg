@@ -40,16 +40,15 @@ public class HealthSystemTests
     }
 
     [TestCase(50)]
-    [TestCase(100)]
+    [TestCase(200)]
+    [TestCase(300)]
     public void PawnHealthChangesWhenTakeDamage(int damage)
     {
         // Arrange
 
         // Устанавливаем начальные значения
         _pawn.PawnConfiguration.Type = "Character";
-        _pawn.PawnConfiguration.MaxHealthValue = 500;
-        _pawn.PawnConfiguration.StartHealthValue = 300;
-        _pawn.PawnConfiguration.CurrentHealthValue = 10;
+        _pawn.PawnConfiguration.CurrentHealthValue = 200;
 
         int initPawnHealth = _pawn.PawnConfiguration.CurrentHealthValue;
 
@@ -63,16 +62,15 @@ public class HealthSystemTests
 
 
     [TestCase(50)]
-    [TestCase(100)]
+    [TestCase(200)]
+    [TestCase(300)]
     public void PawnHealthViewChangeWhenTakeDamage(int damage)
     {
         // Arrange
 
         // Устанавливаем начальные значения
         _pawn.PawnConfiguration.Type = "Character";
-        _pawn.PawnConfiguration.MaxHealthValue = 200;
-        _pawn.PawnConfiguration.StartHealthValue = 100;
-        _pawn.PawnConfiguration.CurrentHealthValue = 100;
+        _pawn.PawnConfiguration.CurrentHealthValue = 200;
 
         int initialCurrentPawnHealth = _pawn.PawnConfiguration.CurrentHealthValue;
         int initialMaxPawnHealth = _pawn.PawnConfiguration.MaxHealthValue;
@@ -98,14 +96,12 @@ public class HealthSystemTests
     }
 
     [TestCase(0)]
-    [TestCase(-10)]
     [TestCase(-50)]
+    [TestCase(-200)]
     public void HealthDoesNotGoNegativeWhenDamageIsNegative(int damage)
     {
         // Устанавливаем начальные значения
         _pawn.PawnConfiguration.Type = "Character";
-        _pawn.PawnConfiguration.MaxHealthValue = 200;
-        _pawn.PawnConfiguration.StartHealthValue = 100;
         _pawn.PawnConfiguration.CurrentHealthValue = 100;
 
         // Arrange
