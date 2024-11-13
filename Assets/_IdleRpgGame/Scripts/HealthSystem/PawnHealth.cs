@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEngine;
 
 public class PawnHealth
 {
@@ -16,10 +15,9 @@ public class PawnHealth
 
     public void TakeDamage(int damage, string pawnType)
     {
-        if (_pawn.PawnConfiguration.Type != pawnType)
+        if (_pawn.PawnConfiguration.Type != pawnType && damage >= 0) 
         {
             _pawn.PawnConfiguration.CurrentHealthValue -= damage;
-
 
             if (_pawn.PawnConfiguration.CurrentHealthValue <= 0)
             {

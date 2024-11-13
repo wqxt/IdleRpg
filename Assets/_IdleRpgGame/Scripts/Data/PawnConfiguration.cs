@@ -17,51 +17,51 @@ public class PawnConfiguration : ScriptableObject
     [SerializeField] private float _switchWeaponTime;
     [SerializeField] private int _currentAttackDamage;
     [SerializeField] private int _pawnDamage;
-    [SerializeField] private float _spawnChance;
-    [SerializeField] public Transform PawnTransform;
 
-    public int CurrentAttackDamage { get; set; }
-    public string Type
+    public void EditorSetup()
     {
-        get
-        {
-            return _type;
-        }
-        set
-        {
-            _type = value;
-        }
+          _currentHealthValue = _startHealthValue;
+          _maxHealthValue = _startHealthValue;
     }
+
+    internal void Setup()
+    {
+        _startHealthValue = _maxHealthValue;
+        _currentHealthValue = _maxHealthValue;
+    }
+
+    public int CurrentAttackDamage
+    {
+        get => _currentAttackDamage;
+        set => _currentAttackDamage = value;
+    }
+
     public int PawnDamage
     {
-        get
-        {
-            return _pawnDamage;
-        }
-        set
-        {
-            _pawnDamage = value;
-        }
+        get => _pawnDamage;
+        set => _pawnDamage = value;
     }
-    public float SpawnChance
+
+    public string Type
     {
-        get
-        {
-            return _spawnChance;
-        }
-
-        set
-        {
-            _spawnChance = value;
-        }
-
+        get => _type;
+        set => _type = value;
     }
+
+    public int MaxHealthValue
+    {
+        get => _maxHealthValue;
+        set => _maxHealthValue = value;
+    }
+    public bool MeleeAttack
+    {
+        get => _meleeAttack;
+        set => _meleeAttack = value;
+    }
+
     public int StartHealthValue
     {
-        get
-        {
-            return _startHealthValue;
-        }
+        get => _startHealthValue;
 
         set
         {
@@ -73,14 +73,38 @@ public class PawnConfiguration : ScriptableObject
             {
                 _startHealthValue = value;
             }
+
         }
     }
+
+    public int CurrentHealthValue
+    {
+        get => _currentHealthValue;
+
+        set
+        {
+            if (value >= _maxHealthValue)
+            {
+                _currentHealthValue = _maxHealthValue;
+            }
+
+
+            if (value <= 0)
+            {
+
+                _currentHealthValue = 0;
+            }
+            else
+            {
+                _currentHealthValue = value;
+            }
+        }
+    }
+
+
     public int MinHealthValue
     {
-        get
-        {
-            return _minHealthValue;
-        }
+        get => _minHealthValue;
 
         set
         {
@@ -95,73 +119,10 @@ public class PawnConfiguration : ScriptableObject
             }
         }
     }
-    public int MaxHealthValue
-    {
-        get
-        {
-            return _maxHealthValue;
-        }
 
-        set
-        {
-            if (value > 100)
-            {
-                _maxHealthValue = _startHealthValue;
-
-            }
-            else
-            {
-                _maxHealthValue = value;
-            }
-        }
-    }
-    public bool MeleeAttack
-    {
-        get
-        {
-            return _meleeAttack;
-        }
-
-        set
-        {
-            _meleeAttack = value;
-
-        }
-    }
-    public int CurrentHealthValue
-    {
-        get
-        {
-
-            return _currentHealthValue;
-        }
-
-        set
-        {
-
-            if (value < 0 || value == 0)
-            {
-
-                _currentHealthValue = 0;
-            }
-            else
-            {
-
-                _currentHealthValue = value;
-            }
-
-            if (value > _maxHealthValue)
-            {
-                _currentHealthValue = _maxHealthValue;
-            }
-        }
-    }
     public float SwitchWeaponTime
     {
-        get
-        {
-            return _switchWeaponTime;
-        }
+        get => _switchWeaponTime;
 
         set
         {
@@ -177,10 +138,7 @@ public class PawnConfiguration : ScriptableObject
     }
     public float AttackTime
     {
-        get
-        {
-            return _attackTime;
-        }
+        get => _attackTime;
 
         set
         {
@@ -196,10 +154,7 @@ public class PawnConfiguration : ScriptableObject
     }
     public float PrepareAttackTime
     {
-        get
-        {
-            return _prepareAttackTime;
-        }
+        get => _prepareAttackTime;
 
         set
         {

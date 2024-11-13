@@ -1,18 +1,14 @@
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[assembly: InternalsVisibleTo("EditModeTest")]
 public class HealthView : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _currentHealthValueText;
-    [SerializeField] private TextMeshProUGUI _maxHealthValueText;
-    [SerializeField] private Slider _healthSlider;
-
-
-    //  Для тестирования
-    public int CurrentHealthTextValue => int.Parse(_currentHealthValueText.text);
-    public float HealthSliderValue => _healthSlider.value;
-
+    [SerializeField] internal protected TextMeshProUGUI _currentHealthValueText;
+    [SerializeField] internal protected TextMeshProUGUI _maxHealthValueText;
+    [SerializeField] internal protected Slider _healthSlider;
 
     public void Initialize(TextMeshProUGUI currentHealthText, TextMeshProUGUI maxHealthText, Slider healthSlider)
     {
@@ -27,11 +23,12 @@ public class HealthView : MonoBehaviour
         _currentHealthValueText.text = currentHealthValue.ToString();
     }
 
-    public void SetupHealth(int startHealthValue)
+    public void SetupHealth(int startHealthValue, int maxHealthValue)
     {
-        _healthSlider.maxValue = startHealthValue;
+        _healthSlider.maxValue = maxHealthValue;
         _healthSlider.value = startHealthValue;
-        _maxHealthValueText.text = startHealthValue.ToString();
+
+        _maxHealthValueText.text = maxHealthValue.ToString();
         _currentHealthValueText.text = startHealthValue.ToString();
     }
 }

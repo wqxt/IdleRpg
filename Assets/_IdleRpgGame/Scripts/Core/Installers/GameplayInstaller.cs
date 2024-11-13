@@ -42,7 +42,6 @@ namespace Assets._IdleRpgGame.Scripts.Core.Installers
             cameraController.SetCameraForCanvas(canvas, _cameraPrefab);
         }
 
-
         private void HealthViewInstall()
         {
             for (int i = 0; i < _healthViewPrefabs.Length; i++)

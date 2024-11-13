@@ -1,10 +1,12 @@
+using System.Runtime.CompilerServices;
 using Zenject;
 
+[assembly: InternalsVisibleTo("EditModeTest")]
 public class HealthObserver
 {
-    public HealthView[] _healthView;
-    private PawnPool _pawnPool;
-    private Spawner _spawner;
+    internal protected HealthView[] _healthView;
+    internal protected PawnPool _pawnPool;
+    internal protected Spawner _spawner;
 
     [Inject]
     public void Construct(Spawner spawner, PawnPool pawnPool, HealthView[] healthView)
@@ -18,20 +20,49 @@ public class HealthObserver
     private void Initialization()
     {
         SetupPawnView();
-        SetupSubscribe();
+        PawnSubscribe(null); 
     }
 
-    private void SetupSubscribe()
+    public void PawnSubscribe(string pawnType)
     {
-        foreach (Pawn pawn in _pawnPool.ScenePawnList)
+        if(pawnType == null)
         {
-            pawn._attackState.Attacked += PawnTakeDamage;
+            foreach (Pawn pawn in _pawnPool.ScenePawnList)
+            {
+                pawn._attackState.Attacked += PawnTakeDamage;
+            }
+
+            foreach (var pawnHealth in _pawnPool.PawnHealthList)
+            {
+                pawnHealth.PawnDeath += PawnDeath;
+                pawnHealth.ChangeHealth += UpdatePawnHealthView;
+            }
+        }
+        else
+        {
+            foreach (var pawnhealth in _pawnPool.PawnHealthList)
+            {
+                if (pawnhealth._pawn.PawnConfiguration.Type == pawnType)
+                {
+                    pawnhealth.PawnDeath += PawnDeath;
+                    pawnhealth.ChangeHealth += UpdatePawnHealthView;
+                    pawnhealth._pawn._attackState.Attacked += PawnTakeDamage;
+                }
+            }
         }
 
+    }
+
+    private void PawnUnSubscribe(string pawnType)
+    {
         foreach (var pawnHealth in _pawnPool.PawnHealthList)
         {
-            pawnHealth.PawnDeath += PawnDeath;
-            pawnHealth.ChangeHealth += UpdatePawnHealthView;
+            if (pawnHealth._pawn.PawnConfiguration.Type == pawnType)
+            {
+                pawnHealth.PawnDeath -= PawnDeath;
+                pawnHealth.ChangeHealth -= UpdatePawnHealthView;
+                pawnHealth._pawn._attackState.Attacked -= PawnTakeDamage;
+            }
         }
     }
 
@@ -43,7 +74,7 @@ public class HealthObserver
             {
                 if (pawn.PawnConfiguration.Type == view.tag && IdleGameState.CurrentState == GameState.EntryState)
                 {
-                    view.SetupHealth(pawn.PawnConfiguration.StartHealthValue);
+                    view.SetupHealth(pawn.PawnConfiguration.StartHealthValue, pawn.PawnConfiguration.MaxHealthValue);
                 }
                 else if(pawn.PawnConfiguration.Type == view.tag && pawn.PawnConfiguration.Type != "Character")
                 {
@@ -67,32 +98,6 @@ public class HealthObserver
         _spawner.RemovePawn(pawnType); // Cкрываем пешку, создаем новую
         PawnSubscribe(pawnType); // Подписываем новую пешку 
         SetupPawnView(); // Настроиваем отображение здоровья
-    }
-
-    public void PawnSubscribe(string pawnType)
-    {
-        foreach (var pawnhealth in _pawnPool.PawnHealthList)
-        {
-            if (pawnhealth._pawn.PawnConfiguration.Type == pawnType)
-            {
-                pawnhealth.PawnDeath += PawnDeath;
-                pawnhealth.ChangeHealth += UpdatePawnHealthView;
-                pawnhealth._pawn._attackState.Attacked += PawnTakeDamage;
-            }
-        }
-    }
-
-    private void PawnUnSubscribe(string pawnType)
-    {
-        foreach (var pawnHealth in _pawnPool.PawnHealthList)
-        {
-            if (pawnHealth._pawn.PawnConfiguration.Type == pawnType)
-            {
-                pawnHealth.PawnDeath -= PawnDeath;
-                pawnHealth.ChangeHealth -= UpdatePawnHealthView;
-                pawnHealth._pawn._attackState.Attacked -= PawnTakeDamage;
-            }
-        }
     }
 
     private void PawnTakeDamage(int damage, string pawnType)

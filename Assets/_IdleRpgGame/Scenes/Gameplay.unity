@@ -347,7 +347,5 @@ MonoBehaviour:
   _healthViewPrefabs:
   - {fileID: 1482459826066818979, guid: 1acb1a61de9ddbe40bc26f975529d936, type: 3}
   - {fileID: 5349107970257814967, guid: 4d3465f7c980fd84d9711a945d9168eb, type: 3}
-  _healthViews: []
   _spawnerPrefab: {fileID: 8327279805534428406, guid: b8c7ad1ec28e18649a86f92065e747ef, type: 3}
   _pawnPoolPrefab: {fileID: 11400000, guid: 72d619cec89c88849bde8300e757083e, type: 2}
-  _healthObserverPrefab: {fileID: 5346398372814775132, guid: 3d4e6c36ee8db1f4ea3faadaaa4d9df9, type: 3}

@@ -18,18 +18,10 @@ public class Pawn : MonoBehaviour
     internal protected AttackState _attackState;
     internal protected EntryState _entryState;
 
-
     public PawnConfiguration PawnConfiguration
     {
-        get
-        {
-            return _configuration;
-        }
-
-        set
-        {
-            _configuration = value;
-        }
+        get => _configuration;
+        set => _configuration = value;
     }
 
     private void OnDisable()
@@ -59,14 +51,21 @@ public class Pawn : MonoBehaviour
         _switchWeaponState = new SwitchWeaponState(this, _stateMachine);
         _stateMachine.Initialize(_entryState);
     }
-    private void SetupConfiguration()
+    public void SetupConfiguration()
     {
+
+
+#if UNITY_EDITOR
+
+        PawnConfiguration.EditorSetup();
+
+#endif
+        PawnConfiguration.Setup();
+
         PawnConfiguration.MeleeAttack = true;
         PawnConfiguration._currentArmor = _startArmor;
         PawnConfiguration._currentWeapon = _startWeapon;
-        PawnConfiguration.CurrentHealthValue = PawnConfiguration.MaxHealthValue;
         PawnConfiguration.AttackTime = PawnConfiguration._currentWeapon.AttackSpeed;
         PawnConfiguration.CurrentAttackDamage = PawnConfiguration._currentWeapon.DamageValue + PawnConfiguration.PawnDamage;
-        PawnConfiguration.CurrentHealthValue = PawnConfiguration.StartHealthValue;
     }
 }
