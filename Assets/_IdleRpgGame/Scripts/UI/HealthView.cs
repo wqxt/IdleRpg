@@ -1,25 +1,34 @@
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[assembly: InternalsVisibleTo("EditModeTest")]
 public class HealthView : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _currentHealthValueText;
-    [SerializeField] private TextMeshProUGUI _maxHealthValueText;
-    [SerializeField] private Slider _healthSlider;
+    [SerializeField] internal protected TextMeshProUGUI _currentHealthValueText;
+    [SerializeField] internal protected TextMeshProUGUI _maxHealthValueText;
+    [SerializeField] internal protected Slider _healthSlider;
 
-    public void ChangeHealth(int currentHealthValue)
+    internal void Initialize(TextMeshProUGUI currentHealthText, TextMeshProUGUI maxHealthText, Slider healthSlider)
     {
-        _healthSlider.value = currentHealthValue;
-        _currentHealthValueText.text = _healthSlider.value.ToString();
+        _currentHealthValueText = currentHealthText;
+        _maxHealthValueText = maxHealthText;
+        _healthSlider = healthSlider;
     }
 
-    //unity button
-    public void RefreshHealth(int startHealthValue)
+    public void UpdateHealth(int currentHealthValue)
     {
-        _healthSlider.maxValue = startHealthValue;
+        _healthSlider.value = currentHealthValue;
+        _currentHealthValueText.text = currentHealthValue.ToString();
+    }
+
+    public void SetupHealth(int startHealthValue, int maxHealthValue)
+    {
+        _healthSlider.maxValue = maxHealthValue;
         _healthSlider.value = startHealthValue;
-        _maxHealthValueText.text = startHealthValue.ToString();
-        _currentHealthValueText.text = _healthSlider.value.ToString();
+
+        _maxHealthValueText.text = maxHealthValue.ToString();
+        _currentHealthValueText.text = startHealthValue.ToString();
     }
 }
