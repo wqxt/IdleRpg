@@ -10,7 +10,7 @@ public class HealthView : MonoBehaviour
     [SerializeField] internal protected TextMeshProUGUI _maxHealthValueText;
     [SerializeField] internal protected Slider _healthSlider;
 
-    public void Initialize(TextMeshProUGUI currentHealthText, TextMeshProUGUI maxHealthText, Slider healthSlider)
+    internal void Initialize(TextMeshProUGUI currentHealthText, TextMeshProUGUI maxHealthText, Slider healthSlider)
     {
         _currentHealthValueText = currentHealthText;
         _maxHealthValueText = maxHealthText;

@@ -1,16 +1,15 @@
-﻿using System;
+﻿using UnityEngine;
+using System;
 
 public class PawnHealth
 {
     internal protected readonly Pawn _pawn;
-
     public event Action<int, string> ChangeHealth;
     public event Action<string> PawnDeath;
 
     public PawnHealth(Pawn pawn)
     {
         _pawn = pawn;
-
     }
 
     public void TakeDamage(int damage, string pawnType)

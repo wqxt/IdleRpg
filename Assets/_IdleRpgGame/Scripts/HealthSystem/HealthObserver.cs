@@ -1,7 +1,7 @@
-using System.Runtime.CompilerServices;
+using UnityEngine;
 using Zenject;
 
-[assembly: InternalsVisibleTo("EditModeTest")]
+
 public class HealthObserver
 {
     internal protected HealthView[] _healthView;
@@ -113,9 +113,14 @@ public class HealthObserver
     {
         foreach (var healthView in _healthView)
         {
-            if (pawnType.Equals(healthView.tag) && healthView != null)
+            if ( healthView.CompareTag(pawnType))
             {
                 healthView.UpdateHealth(currentHealth);
+                break;
+            }
+            else
+            {
+                Debug.LogWarning($"Current checkable view tag doesn`t match with  = {healthView.tag}, need = {pawnType}");  
             }
         }
     }

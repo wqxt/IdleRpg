@@ -54,12 +54,11 @@ public class Pawn : MonoBehaviour
     public void SetupConfiguration()
     {
 
-
 #if UNITY_EDITOR
 
         PawnConfiguration.EditorSetup();
-
 #endif
+
         PawnConfiguration.Setup();
 
         PawnConfiguration.MeleeAttack = true;
