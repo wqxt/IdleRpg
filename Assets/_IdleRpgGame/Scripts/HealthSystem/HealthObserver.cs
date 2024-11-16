@@ -20,12 +20,12 @@ public class HealthObserver
     private void Initialization()
     {
         SetupPawnView();
-        PawnSubscribe(null); 
+        PawnSubscribe(null);
     }
 
     public void PawnSubscribe(string pawnType)
     {
-        if(pawnType == null)
+        if (pawnType == null)
         {
             foreach (Pawn pawn in _pawnPool.ScenePawnList)
             {
@@ -76,7 +76,7 @@ public class HealthObserver
                 {
                     view.SetupHealth(pawn.PawnConfiguration.StartHealthValue, pawn.PawnConfiguration.MaxHealthValue);
                 }
-                else if(view.CompareTag(pawn.PawnConfiguration.Type) && pawn.PawnConfiguration.Type != "Character")
+                else if (view.CompareTag(pawn.PawnConfiguration.Type) && pawn.PawnConfiguration.Type != "Character")
                 {
                     view.UpdateHealth(pawn.PawnConfiguration.CurrentHealthValue);
                 }
@@ -113,14 +113,10 @@ public class HealthObserver
     {
         foreach (var healthView in _healthView)
         {
-            if ( healthView.CompareTag(pawnType))
+            if (healthView != null && healthView.CompareTag(pawnType))
             {
                 healthView.UpdateHealth(currentHealth);
                 break;
-            }
-            else
-            {
-                Debug.LogWarning($"Current checkable view tag doesn`t match with  = {healthView.tag}, need = {pawnType}");  
             }
         }
     }

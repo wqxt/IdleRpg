@@ -30,7 +30,7 @@ RectTransform:
   m_GameObject: {fileID: 724193692330672785}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.016059028, y: 0.016059028, z: 0.016059028}
+  m_LocalScale: {x: 0.17, y: 0.17, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 724193692632177536}
@@ -38,7 +38,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
@@ -136,7 +136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec6cbcc077232247b550a6c84d14aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterConfiguration: {fileID: 11400000, guid: 62aee9596baaae44d9e346df5518840c, type: 2}
   _meleeWeapon: {fileID: 11400000, guid: ffd1f37b8c1f5d9488802c11bd0e7b2c, type: 2}
   _rangeWeapon: {fileID: 11400000, guid: e9d868243e7adba45b126332cc6bb9a8, type: 2}
 --- !u!1 &724193692497664499
@@ -297,8 +296,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 724193692632177537}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
-  m_LocalScale: {x: 0.9505, y: 0.9505, z: 0.9505}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.682473, y: 0.682473, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 724193692497664498}
@@ -308,7 +307,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -350, y: -363}
+  m_AnchoredPosition: {x: -394, y: -347}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &724193693097109690

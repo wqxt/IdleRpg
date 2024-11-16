@@ -349,3 +349,4 @@ MonoBehaviour:
   - {fileID: 5349107970257814967, guid: 4d3465f7c980fd84d9711a945d9168eb, type: 3}
   _spawnerPrefab: {fileID: 8327279805534428406, guid: b8c7ad1ec28e18649a86f92065e747ef, type: 3}
   _pawnPoolPrefab: {fileID: 11400000, guid: 72d619cec89c88849bde8300e757083e, type: 2}
+  _switchWeaponViewPrefab: {fileID: 724193692330672798, guid: 440c8e6125bcd2542b18d8d7f36443dc, type: 3}

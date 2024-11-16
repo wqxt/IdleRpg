@@ -11,16 +11,44 @@ namespace Assets._IdleRpgGame.Scripts.Core.Installers
         [SerializeField] private HealthView[] _healthViewPrefabs;
         [SerializeField] private Spawner _spawnerPrefab;
         [SerializeField] private PawnPool _pawnPoolPrefab;
-
+        [SerializeField] private WeaponView _switchWeaponViewPrefab;
         public override void InstallBindings()
         {
             PawnPoolInstall();
             SpawnerInstall();
             CameraInstall();
             GameplayViewInstall();
+
             HealthViewInstall();
             HealthObserverInstall();
+
+            WeaponObserverInstall();
+            WeaponViewInstall();
+
         }
+
+        private void WeaponObserverInstall()
+        {
+            // Регистрируем PawnConfiguration из PawnPool для Weapon Observer
+            var characterConfiguration = _pawnPoolPrefab.Character.PawnConfiguration;
+            Container.Bind<PawnConfiguration>().FromInstance(characterConfiguration).AsSingle();
+
+
+            Container.Bind<WeaponObserver>()
+            .AsSingle()
+            .WithArguments(Container.Resolve<PawnConfiguration>());
+        }
+
+        private void WeaponViewInstall()
+        {
+            _switchWeaponViewPrefab = Container.InstantiatePrefabForComponent<WeaponView>(_switchWeaponViewPrefab);
+            Container.Bind<WeaponView>().FromInstance(_switchWeaponViewPrefab).AsSingle();
+
+            var canvas = _switchWeaponViewPrefab.GetComponent<Canvas>();
+            var cameraController = Container.Resolve<ICameraSetup>();
+            cameraController.SetCameraForCanvas(canvas, _cameraPrefab);
+        }
+
 
         private void CameraInstall()
         {
