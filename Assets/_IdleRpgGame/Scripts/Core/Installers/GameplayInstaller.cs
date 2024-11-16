@@ -14,6 +14,7 @@ namespace Assets._IdleRpgGame.Scripts.Core.Installers
         [SerializeField] private WeaponView _switchWeaponViewPrefab;
         public override void InstallBindings()
         {
+            PawnFactoryInstall();
             PawnPoolInstall();
             SpawnerInstall();
             CameraInstall();
@@ -24,19 +25,19 @@ namespace Assets._IdleRpgGame.Scripts.Core.Installers
 
             WeaponObserverInstall();
             WeaponViewInstall();
+ 
+        }
 
+        private void PawnFactoryInstall()
+        {
+            Container.Bind<IPawnFactory>().To<PawnFactory>().AsSingle();
         }
 
         private void WeaponObserverInstall()
         {
-            // Регистрируем PawnConfiguration из PawnPool для Weapon Observer
-            var characterConfiguration = _pawnPoolPrefab.Character.PawnConfiguration;
-            Container.Bind<PawnConfiguration>().FromInstance(characterConfiguration).AsSingle();
-
-
             Container.Bind<WeaponObserver>()
-            .AsSingle()
-            .WithArguments(Container.Resolve<PawnConfiguration>());
+                .AsSingle()
+                .WithArguments(_pawnPoolPrefab._character.PawnConfiguration);
         }
 
         private void WeaponViewInstall()
@@ -99,7 +100,7 @@ namespace Assets._IdleRpgGame.Scripts.Core.Installers
 
         private void PawnPoolInstall()
         {
-            Container.Bind<PawnPool>().FromInstance(_pawnPoolPrefab).AsSingle();
+            Container.Bind<PawnPool>().FromScriptableObject(_pawnPoolPrefab).AsSingle();
         }
     }
 }

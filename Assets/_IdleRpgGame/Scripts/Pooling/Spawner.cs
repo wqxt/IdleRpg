@@ -1,8 +1,15 @@
 using UnityEngine;
+using Zenject;
 
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private PawnPool _pawnPool;
+
+    [Inject]
+    public void Construct(PawnPool pawnPool)
+    {
+        _pawnPool = pawnPool;
+    }
 
     private void Awake()
     {
@@ -13,7 +20,7 @@ public class Spawner : MonoBehaviour
 
     private void SpawnCharacter()
     {
-        Pawn characterPawn = Instantiate(_pawnPool.Character, new Vector3(0, 0, 0), Quaternion.identity);
+        Pawn characterPawn = _pawnPool.GetCharacter();
         characterPawn.transform.position = characterPawn._pawnTransform.position;
         _pawnPool.ScenePawnList.Add(characterPawn);
 
