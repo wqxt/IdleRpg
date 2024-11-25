@@ -59,7 +59,11 @@ namespace IdleGame.StateMachine
 
             Attacked?.Invoke(_pawn.PawnConfiguration.CurrentAttackDamage,_pawn.PawnConfiguration.Type);
 
-            _pawn._fightIndicatorAnimator.Play("Indicator", 0, 0f);
+            if(_pawn._fightIndicatorAnimator.isActiveAndEnabled)
+            {
+                _pawn._fightIndicatorAnimator.Play("Indicator", 0, 0f);
+            }
+
 
             if (_meleeAttack)
             {

@@ -9,7 +9,6 @@ public class HealthView : MonoBehaviour
     [SerializeField] internal protected TextMeshProUGUI _currentHealthValueText;
     [SerializeField] internal protected TextMeshProUGUI _maxHealthValueText;
     [SerializeField] internal protected Slider _healthSlider;
-
     internal void Initialize(TextMeshProUGUI currentHealthText, TextMeshProUGUI maxHealthText, Slider healthSlider)
     {
         _currentHealthValueText = currentHealthText;
@@ -32,3 +31,4 @@ public class HealthView : MonoBehaviour
         _currentHealthValueText.text = startHealthValue.ToString();
     }
 }
+

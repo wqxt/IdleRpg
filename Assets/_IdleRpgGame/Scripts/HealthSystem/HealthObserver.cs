@@ -74,10 +74,12 @@ public class HealthObserver
             {
                 if (pawn.PawnConfiguration.Type == view.tag && IdleGameState.CurrentState == GameState.EntryState)
                 {
+                    Debug.Log($"pawn type {pawn.PawnConfiguration.Type}");
                     view.SetupHealth(pawn.PawnConfiguration.StartHealthValue, pawn.PawnConfiguration.MaxHealthValue);
                 }
                 else if (view.CompareTag(pawn.PawnConfiguration.Type) && pawn.PawnConfiguration.Type != "Character")
                 {
+                    view.SetupHealth(pawn.PawnConfiguration.StartHealthValue, pawn.PawnConfiguration.MaxHealthValue);
                     view.UpdateHealth(pawn.PawnConfiguration.CurrentHealthValue);
                 }
             }

@@ -12,12 +12,14 @@ namespace Assets._IdleRpgGame.Scripts.Core.Installers
         [SerializeField] private Spawner _spawnerPrefab;
         [SerializeField] private PawnPool _pawnPoolPrefab;
         [SerializeField] private WeaponView _switchWeaponViewPrefab;
+
         public override void InstallBindings()
         {
+            CameraInstall();
             PawnFactoryInstall();
             PawnPoolInstall();
             SpawnerInstall();
-            CameraInstall();
+
             GameplayViewInstall();
 
             HealthViewInstall();
@@ -25,7 +27,7 @@ namespace Assets._IdleRpgGame.Scripts.Core.Installers
 
             WeaponObserverInstall();
             WeaponViewInstall();
- 
+
         }
 
         private void PawnFactoryInstall()
@@ -42,48 +44,51 @@ namespace Assets._IdleRpgGame.Scripts.Core.Installers
 
         private void WeaponViewInstall()
         {
-            _switchWeaponViewPrefab = Container.InstantiatePrefabForComponent<WeaponView>(_switchWeaponViewPrefab);
-            Container.Bind<WeaponView>().FromInstance(_switchWeaponViewPrefab).AsSingle();
+            var switchWeaponViewPrefab = Container.InstantiatePrefabForComponent<WeaponView>(_switchWeaponViewPrefab);
+            Container.Bind<WeaponView>().FromInstance(switchWeaponViewPrefab).AsSingle();
 
-            var canvas = _switchWeaponViewPrefab.GetComponent<Canvas>();
+            var canvas = switchWeaponViewPrefab.GetComponent<Canvas>();
+            var camera = Container.Resolve<Camera>();
             var cameraController = Container.Resolve<ICameraSetup>();
-            cameraController.SetCameraForCanvas(canvas, _cameraPrefab);
+
+            cameraController.SetCameraForCanvas(canvas, camera);
         }
 
 
         private void CameraInstall()
         {
             var cameraController = new CameraController();
-            // Привязываем созданный экземпляр как ICameraSetup
             Container.Bind<ICameraSetup>().FromInstance(cameraController).AsSingle();
 
-            _cameraPrefab = Container.InstantiatePrefabForComponent<Camera>(_cameraPrefab);
-            Container.Bind<Camera>().FromInstance(_cameraPrefab).AsSingle();
+            var camera = Container.InstantiatePrefabForComponent<Camera>(_cameraPrefab);
+            Container.Bind<Camera>().FromInstance(camera).AsSingle();
         }
 
         private void GameplayViewInstall()
         {
-            _gameplayViewPrefab = Container.InstantiatePrefabForComponent<GameplayView>(_gameplayViewPrefab);
-            Container.Bind<GameplayView>().FromInstance(_gameplayViewPrefab).AsSingle();
+            var gameplayView = Container.InstantiatePrefabForComponent<GameplayView>(_gameplayViewPrefab);
+            Container.Bind<GameplayView>().FromInstance(gameplayView).AsSingle();
 
-            var canvas = _gameplayViewPrefab.GetComponent<Canvas>();
+            var canvas = gameplayView.GetComponent<Canvas>();
             var cameraController = Container.Resolve<ICameraSetup>();
-            cameraController.SetCameraForCanvas(canvas, _cameraPrefab);
+            var camera = Container.Resolve<Camera>();
+
+            cameraController.SetCameraForCanvas(canvas, camera);
         }
 
         private void HealthViewInstall()
         {
             for (int i = 0; i < _healthViewPrefabs.Length; i++)
             {
-                _healthViewPrefabs[i] = Container.InstantiatePrefabForComponent<HealthView>(_healthViewPrefabs[i]);
-                Container.Bind<HealthView>().FromInstance(_healthViewPrefabs[i]).AsCached();
+                var healthView = _healthViewPrefabs[i];
+                healthView = Container.InstantiatePrefabForComponent<HealthView>(_healthViewPrefabs[i]);
+                Container.Bind<HealthView>().FromInstance(healthView).AsCached();
 
-                var canvas = _healthViewPrefabs[i].GetComponent<Canvas>();
+                var canvas = healthView.GetComponent<Canvas>();
+                var camera = Container.Resolve<Camera>();
                 var cameraController = Container.Resolve<ICameraSetup>();
-                cameraController.SetCameraForCanvas(canvas, _cameraPrefab);
+                cameraController.SetCameraForCanvas(canvas, camera);
             }
-
-            Container.Bind<HealthView[]>().FromInstance(_healthViewPrefabs).AsSingle();
         }
 
         private void HealthObserverInstall()
@@ -94,8 +99,8 @@ namespace Assets._IdleRpgGame.Scripts.Core.Installers
 
         private void SpawnerInstall()
         {
-            _spawnerPrefab = Container.InstantiatePrefabForComponent<Spawner>(_spawnerPrefab);
-            Container.Bind<Spawner>().FromInstance(_spawnerPrefab).AsSingle();
+            var spawner = Container.InstantiatePrefabForComponent<Spawner>(_spawnerPrefab);
+            Container.Bind<Spawner>().FromInstance(spawner).AsSingle();
         }
 
         private void PawnPoolInstall()
