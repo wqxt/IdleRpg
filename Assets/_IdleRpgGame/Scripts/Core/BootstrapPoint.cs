@@ -24,7 +24,7 @@ namespace Assets._IdleRpgGame.Scripts.Core.Utils
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
             _instance = new BootstrapPoint();
-            _instance.StartGame();
+            //_instance.StartGame(); 
         }
 
         public void StartGame()
