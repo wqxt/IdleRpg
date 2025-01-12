@@ -5,5 +5,6 @@
         public static string BOOT = "Bootstrap";
         public static string GAMEPLAY = "Gameplay";
         public static string MAINMENU = "MainMenu";
+        public static string HUB = "Hub";
     }
 }
