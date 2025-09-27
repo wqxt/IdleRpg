@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Runtime.CompilerServices;
+using UnityEngine;
 
 namespace Assets._IdleRpgGame.Scripts.Core.Utils
 {
@@ -21,14 +22,14 @@ namespace Assets._IdleRpgGame.Scripts.Core.Utils
 #else
             _dataPath = Application.persistentDataPath;
 #endif
-
         }
-        
-        public static void Log(GameObject objectClass, string message)
+
+        public static void Log(string message, LogLayer logLayer, [CallerMemberName] string memberName = "", [CallerFilePath] string filePath = "")
         {
-            //Debug.Log(gameObject);
+
+            string className = System.IO.Path.GetFileNameWithoutExtension(filePath);
+            string log = $"[{className}.{memberName}] {message}";
+            Debug.Log(log);
         }
     }
-
-
 }
