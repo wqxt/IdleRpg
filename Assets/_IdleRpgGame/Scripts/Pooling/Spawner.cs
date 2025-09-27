@@ -5,12 +5,11 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private PawnPool _pawnPool;
 
-    [Inject]
-    public void Construct(PawnPool pawnPool)
+
+    public void Init(PawnPool pawnPool)
     {
         _pawnPool = pawnPool;
     }
-
     private void Awake()
     {
         _pawnPool.SetupPool();

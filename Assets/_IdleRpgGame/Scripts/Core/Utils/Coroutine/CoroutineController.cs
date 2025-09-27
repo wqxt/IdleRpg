@@ -5,12 +5,12 @@ namespace Assets._IdleRpgGame.Scripts.Core.Utils
 {
     public class CoroutineController : MonoBehaviour, ICoroutineController
     {
-        public new Coroutine StartCoroutine(IEnumerator routine)
+        public new void StartCoroutine(IEnumerator routine)
         {
-            return base.StartCoroutine(routine);
+            base.StartCoroutine(routine);
         }
 
-        public new void StopCoroutine(Coroutine coroutine)
+        public new void StopCoroutine(IEnumerator coroutine)
         {
             if (coroutine != null)
             {

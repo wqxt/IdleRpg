@@ -105,7 +105,10 @@ namespace Assets._IdleRpgGame.Scripts.Core.Installers
 
         private void PawnPoolInstall()
         {
+  
+
             Container.Bind<PawnPool>().FromScriptableObject(_pawnPoolPrefab).AsSingle();
+            _spawnerPrefab.Init(_pawnPoolPrefab);
         }
     }
 }
