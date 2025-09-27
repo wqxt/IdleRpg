@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using Codice.CM.Common;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets._IdleRpgGame.Scripts.Core.Utils
 {
@@ -7,15 +9,24 @@ namespace Assets._IdleRpgGame.Scripts.Core.Utils
     {
         public new void StartCoroutine(IEnumerator routine)
         {
+            if (routine == null)
+            {
+                Debug.LogError("[CoroutineController] ");
+                return;
+            }
+
             base.StartCoroutine(routine);
         }
 
-        public new void StopCoroutine(IEnumerator coroutine)
+        public new void StopCoroutine(IEnumerator routine)
         {
-            if (coroutine != null)
+            if (routine == null)
             {
-                base.StopCoroutine(coroutine);
+                Debug.LogError("[CoroutineController] ");
+                return;
             }
+
+            base.StopCoroutine(routine);
         }
 
         public new void StopAllCoroutines() => base.StopAllCoroutines();
