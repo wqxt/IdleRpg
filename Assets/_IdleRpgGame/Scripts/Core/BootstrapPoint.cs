@@ -15,8 +15,10 @@ namespace Assets._IdleRpgGame.Scripts.Core.Utils
         {
 
             GameObject coroutineObject = new GameObject(name: "[COROUTINE]");
+            Logger.Log("Create coroutine object", LogLayer.Debug);
             _coroutineController = coroutineObject.AddComponent<CoroutineController>();
             UnityEngine.Object.DontDestroyOnLoad(coroutineObject);
+            Logger.Log("Setup coroutine controller", LogLayer.Debug);
 
         }
 
@@ -28,11 +30,14 @@ namespace Assets._IdleRpgGame.Scripts.Core.Utils
 
             Application.targetFrameRate = 60;
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
+            Logger.Log($"Targer FPS = {Application.targetFrameRate}", LogLayer.Debug);
 
 
             _instance = new BootstrapPoint();
+            Logger.Log("Setup bootstrap", LogLayer.Debug);
 
            _instance.StartGame(); 
+            Logger.Log("Start game", LogLayer.Debug);
         }
 
         public void StartGame()

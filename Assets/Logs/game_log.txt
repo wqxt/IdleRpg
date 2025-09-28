@@ -1,0 +1,7 @@
+[22:41:38] [BootstrapPoint.SetupGame] Message test logger
+[22:45:51] [BootstrapPoint.SetupGame] Message test logger
+[22:45:51] [BootstrapPoint.SetupGame] Targer FPS = 60
+[22:45:51] [BootstrapPoint..ctor] Create coroutine object
+[22:45:51] [BootstrapPoint..ctor] Setup coroutine controller
+[22:45:51] [BootstrapPoint.SetupGame] Setup bootstrap
+[22:45:51] [BootstrapPoint.SetupGame] Start game
