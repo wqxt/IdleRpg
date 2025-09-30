@@ -8,7 +8,7 @@ public class MainMenuView : MonoBehaviour
     public void LoadGameplayScene()
     {
         IdleGameState.CurrentState = GameState.EntryState;
-        SceneManager.LoadScene(SceneName.HUB);
+        SceneManager.LoadScene(SceneName.GAMEPLAY);
     }
 
     //unity button 

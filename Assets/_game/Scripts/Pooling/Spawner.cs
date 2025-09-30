@@ -5,8 +5,8 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private PawnPool _pawnPool;
 
-
-    public void Init(PawnPool pawnPool)
+    [Inject]
+    public void Construct(PawnPool pawnPool)
     {
         _pawnPool = pawnPool;
     }

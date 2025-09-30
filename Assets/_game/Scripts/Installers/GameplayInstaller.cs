@@ -108,7 +108,7 @@ namespace Assets._IdleRpgGame.Scripts.Core.Installers
   
 
             Container.Bind<PawnPool>().FromScriptableObject(_pawnPoolPrefab).AsSingle();
-            _spawnerPrefab.Init(_pawnPoolPrefab);
+
         }
     }
 }
